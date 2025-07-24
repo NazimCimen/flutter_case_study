@@ -41,7 +41,7 @@ class ProfileError extends ProfileState {
 }
 
 class ProfileImageUpdated extends ProfileState {
-  final File image;
+  final File? image;
 
   const ProfileImageUpdated(this.image);
 

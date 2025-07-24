@@ -54,6 +54,10 @@ class ProfileCubit extends Cubit<ProfileState> {
     }
   }
 
+  Future<void> removeProfileImage() async {
+    emit(const ProfileImageUpdated(null));
+  }
+
   Future<void> updateProfileImage(File image) async {
     /* final result = await userCubit.updateProfileImage(image);
     if (result) {

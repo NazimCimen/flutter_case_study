@@ -32,5 +32,16 @@
   "uploadPhotosSubtitle": "Resources out incentivize relaxation floor loss cc.",
   "continueButton": "Continue",
   "homeTab": "Home",
-  "profileTab": "Profile"
-}
+  "profileTab": "Profile",
+  "offerSheetHeaderTitle": "Limited Offer",
+  "offerSheetHeaderSubtitle": "Select your token package to earn bonuses and unlock new episodes!",
+  "bonusesSectionTitle": "Bonuses You Will Receive",
+  "bonusPremiumAccount": "Premium\nAccount",
+  "bonusMoreMatches": "More\nMatches",
+  "bonusHighlight": "Highlight",
+  "bonusMoreLikes": "More\nLikes",
+  "tokenLabel": "Token",
+  "perWeekLabel": "Per week",
+  "selectTokenPackage": "Select a token package to unlock",
+  "seeAllTokens": "See All Tokens"
+} 

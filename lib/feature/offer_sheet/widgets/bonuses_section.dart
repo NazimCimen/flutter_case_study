@@ -1,5 +1,6 @@
 part of '../offer_sheet.dart';
 
+/// This widget displays the bonuses section with a title and a list of bonus items.
 class _BonusesSection extends StatelessWidget {
   const _BonusesSection();
 
@@ -21,7 +22,7 @@ class _BonusesSection extends StatelessWidget {
       child: Column(
         children: [
           Text(
-            'Alacağınız Bonuslar',
+            StringConstants.bonusesSectionTitle,
             style: Theme.of(context).textTheme.titleMedium?.copyWith(
               color: Colors.white,
               fontSize: 15,
@@ -29,23 +30,18 @@ class _BonusesSection extends StatelessWidget {
             ),
           ),
           SizedBox(height: context.cMediumValue),
-          const Row(
+          Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              _BonusItem(icon: ImageEnums.ic_sheet1, label: 'Premium\nHesap'),
-              _BonusItem(
-                icon: ImageEnums.ic_sheet2,
-                label: 'Daha Fazla\nEşleşme',
-              ),
-              _BonusItem(icon: ImageEnums.ic_sheet3, label: 'Öne\nÇıkarma'),
-              _BonusItem(
-                icon: ImageEnums.ic_sheet4,
-                label: 'Daha Fazla\nBeğeni',
-              ),
+              _BonusItem(icon: ImageEnums.ic_sheet1, label: StringConstants.bonusPremiumAccount),
+              _BonusItem(icon: ImageEnums.ic_sheet2, label: StringConstants.bonusMoreMatches),
+              _BonusItem(icon: ImageEnums.ic_sheet3, label: StringConstants.bonusHighlight),
+              _BonusItem(icon: ImageEnums.ic_sheet4, label: StringConstants.bonusMoreLikes),
             ],
           ),
         ],
       ),
     );
   }
-}
+} 

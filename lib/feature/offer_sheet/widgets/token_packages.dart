@@ -1,5 +1,6 @@
 part of '../offer_sheet.dart';
 
+/// This widget displays the token packages section with a title and a list of token cards.
 class _TokenPackages extends StatelessWidget {
   const _TokenPackages();
 
@@ -10,7 +11,7 @@ class _TokenPackages extends StatelessWidget {
         SizedBox(height: context.cMediumValue),
 
         Text(
-          'Kilidi açmak için bir jeton paketi seçin',
+          StringConstants.selectTokenPackage,
           style: Theme.of(context).textTheme.titleMedium?.copyWith(
             fontSize: 15,
             fontWeight: FontWeight.w500,
@@ -27,7 +28,6 @@ class _TokenPackages extends StatelessWidget {
                 total: '330',
                 price: '₺99,99',
                 bonus: '+10%',
-                //  color: Colors.red,
               ),
             ),
             SizedBox(width: context.cMediumValue),
@@ -37,7 +37,7 @@ class _TokenPackages extends StatelessWidget {
                 total: '3375',
                 price: '₺799,99',
                 bonus: '+70%',
-                //  color: Colors.purple,
+                gradientColors: [AppColors.purple, AppColors.primaryColor],
               ),
             ),
             SizedBox(width: context.cMediumValue),
@@ -47,7 +47,6 @@ class _TokenPackages extends StatelessWidget {
                 total: '1350',
                 price: '₺399,99',
                 bonus: '+35%',
-                // color: Colors.red,
               ),
             ),
           ],
@@ -56,4 +55,4 @@ class _TokenPackages extends StatelessWidget {
       ],
     );
   }
-}
+} 

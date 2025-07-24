@@ -6,13 +6,15 @@ import 'package:case_study/product/widgets/custom_button.dart';
 import 'package:case_study/product/constants/custom_shadows.dart';
 import 'package:flutter/material.dart';
 import 'package:case_study/core/utils/enum/image_enum.dart';
+import 'package:case_study/config/localization/string_constants.dart';
 part 'widgets/bonus_item.dart';
 part 'widgets/header.dart';
 part 'widgets/bonuses_section.dart';
 part 'widgets/token_packages.dart';
 part 'widgets/token_card.dart';
 
-class OfferSheet extends StatelessWidget {
+// This widget displays the offer sheet with a header, bonuses section, token packages, and a call to action button.
+final class OfferSheet extends StatelessWidget {
   const OfferSheet({super.key});
 
   @override
@@ -50,10 +52,11 @@ class OfferSheet extends StatelessWidget {
 
                           // Token Packages
                           const _TokenPackages(),
+
                           // Call to Action Button
                           CustomButtonWidget(
                             onPressed: () {},
-                            text: 'Tüm Jetonları Gör',
+                            text: StringConstants.seeAllTokens,
                           ),
                           SizedBox(height: context.cLowValue),
                         ],
@@ -68,4 +71,4 @@ class OfferSheet extends StatelessWidget {
       ),
     );
   }
-}
+} 

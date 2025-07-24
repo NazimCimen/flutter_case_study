@@ -1,21 +1,27 @@
 part of '../offer_sheet.dart';
 
+/// This widget displays a token card with a gradient background, original and total token amounts, price, and bonus.
 class _TokenCard extends StatelessWidget {
   const _TokenCard({
     required this.original,
     required this.total,
     required this.price,
     required this.bonus,
+    this.gradientColors = const [
+      AppColors.primaryColorDark,
+      AppColors.primaryColor,
+    ],
   });
   final String original;
   final String total;
   final String price;
   final String bonus;
+  final List<Color> gradientColors;
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 200,
+      height: context.cXxLargeValue * 3,
       child: Stack(
         clipBehavior: Clip.none,
         fit: StackFit.expand,
@@ -24,24 +30,31 @@ class _TokenCard extends StatelessWidget {
           Container(
             padding: EdgeInsets.all(context.cLowValue),
             decoration: BoxDecoration(
-              gradient: const LinearGradient(
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-                colors: [Color(0xFF6F060B), Color(0xFFE50914)],
-                stops: [0.0, 1.0],
+              gradient: RadialGradient(
+                center: Alignment.topLeft,
+                radius: 2.2,
+                colors: gradientColors,
+                stops: const [0.0, 1.0],
               ),
               borderRadius: BorderRadius.circular(12),
               border: Border.all(color: Colors.white.withValues(alpha: 0.4)),
+              boxShadow: [
+                BoxShadow(
+                  color: AppColors.white.withValues(alpha: 0.3),
+                  blurRadius: 8.33,
+                  blurStyle: BlurStyle.inner,
+                ),
+              ],
             ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const SizedBox(height: 20), // Space for badge
+                SizedBox(height: context.cMediumValue),
                 // Token amounts
                 Column(
                   children: [
                     Text(
-                      original.toString(),
+                      original,
                       style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                         fontSize: 15,
                         fontWeight: FontWeight.w500,
@@ -50,14 +63,14 @@ class _TokenCard extends StatelessWidget {
                     ),
                     SizedBox(height: context.cLowValue / 2),
                     Text(
-                      total.toString(),
+                      total,
                       style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                         fontSize: 25,
                         fontWeight: FontWeight.w900,
                       ),
                     ),
                     Text(
-                      'Jeton',
+                      StringConstants.tokenLabel,
                       style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                         fontSize: 15,
                         fontWeight: FontWeight.w500,
@@ -78,10 +91,11 @@ class _TokenCard extends StatelessWidget {
                       style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                         fontSize: 15,
                         fontWeight: FontWeight.w900,
+                        fontFamily: 'Montserrat',
                       ),
                     ),
                     Text(
-                      'Başına haftalık',
+                      StringConstants.perWeekLabel,
                       style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                         fontSize: 12,
                         fontWeight: FontWeight.w400,
@@ -105,10 +119,10 @@ class _TokenCard extends StatelessWidget {
                   vertical: context.cLowValue / 2,
                 ),
                 decoration: BoxDecoration(
-                  color: const Color(0xFF6F060B),
+                  color: gradientColors.first,
                   borderRadius: context.cBorderRadiusAll18,
                   border: Border.all(
-                    color: Colors.white.withValues(alpha: 0.4),
+                    color: AppColors.white.withValues(alpha: 0.4),
                   ),
                 ),
                 child: Text(

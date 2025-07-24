@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 @immutable
 final class AppColors {
   static const Color primaryColor = Color(0xffe50914);
-  static const Color primaryColorSoft = Color(0xff769bca);
+  static const Color primaryColorDark = Color(0xFF6F060B);
+  static const Color purple = Color(0xFF5949e6);
   static const Color background = Color(0xFF090909);
   static const Color white = Colors.white;
   static const Color black = Colors.black;

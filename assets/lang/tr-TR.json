@@ -32,5 +32,16 @@
   "uploadPhotosSubtitle": "Resources out incentivize relaxation floor loss cc.",
   "continueButton": "Devam Et",
   "homeTab": "Anasayfa",
-  "profileTab": "Profil"
-}
+  "profileTab": "Profil",
+  "offerSheetHeaderTitle": "Sınırlı Teklif",
+  "offerSheetHeaderSubtitle": "Jeton paketin'ni seçerek bonus kazanın ve yeni bölümlerin kilidini açın!",
+  "bonusesSectionTitle": "Alacağınız Bonuslar",
+  "bonusPremiumAccount": "Premium\nHesap",
+  "bonusMoreMatches": "Daha Fazla\nEşleşme",
+  "bonusHighlight": "Öne\nÇıkarma",
+  "bonusMoreLikes": "Daha Fazla\nBeğeni",
+  "tokenLabel": "Jeton",
+  "perWeekLabel": "Başına haftalık",
+  "selectTokenPackage": "Kilidi açmak için bir jeton paketi seçin",
+  "seeAllTokens": "Tüm Jetonları Gör"
+} 

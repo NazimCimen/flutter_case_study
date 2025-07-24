@@ -1,5 +1,6 @@
 part of '../offer_sheet.dart';
 
+/// This widget displays the header section with a title and a subtitle.
 class _Header extends StatelessWidget {
   const _Header();
 
@@ -11,7 +12,7 @@ class _Header extends StatelessWidget {
         children: [
           SizedBox(height: context.cLargeValue),
           Text(
-            'Sınırlı Teklif',
+            StringConstants.offerSheetHeaderTitle,
             style: Theme.of(context).textTheme.titleLarge?.copyWith(
               fontSize: 20,
               fontWeight: FontWeight.w600,
@@ -19,7 +20,7 @@ class _Header extends StatelessWidget {
           ),
           SizedBox(height: context.cLowValue),
           Text(
-            'Jeton paketin\'ni seçerek bonus kazanın ve yeni bölümlerin kilidini açın!',
+            StringConstants.offerSheetHeaderSubtitle,
             textAlign: TextAlign.center,
             style: Theme.of(context).textTheme.bodyMedium?.copyWith(
               fontSize: 12,
@@ -31,4 +32,4 @@ class _Header extends StatelessWidget {
       ),
     );
   }
-}
+} 

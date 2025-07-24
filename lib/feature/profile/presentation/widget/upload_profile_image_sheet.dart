@@ -2,7 +2,7 @@ import 'package:case_study/config/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:case_study/core/size/constant_size.dart';
-import 'package:case_study/feature/profile/upload_profile_image_mixin.dart';
+import 'package:case_study/feature/profile/presentation/mixin/upload_profile_image_mixin.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:case_study/feature/profile/presentation/cubit/profile_cubit.dart';
 
@@ -43,66 +43,23 @@ class _UploadProfileImageSheetState extends State<UploadProfileImageSheet>
                 ),
               ),
               const Spacer(),
-              if (image == null)
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    _ImageOptionButton(
-                      icon: Icons.photo_library_outlined,
-                      label: 'Galeri',
-                      onTap: () async => pickImage(ImageSource.gallery),
-                    ),
-                    _ImageOptionButton(
-                      icon: Icons.camera_alt_outlined,
-                      label: 'Kamera',
-                      onTap: () async => pickImage(ImageSource.camera),
-                    ),
-                  ],
-                )
-              else
-                CircleAvatar(
-                  radius: context.cLargeValue * 2,
-                  backgroundImage: FileImage(image!),
-                ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  _ImageOptionButton(
+                    icon: Icons.photo_library_outlined,
+                    label: 'Galeri',
+                    onTap: () async => pickImage(ImageSource.gallery),
+                  ),
+                  _ImageOptionButton(
+                    icon: Icons.camera_alt_outlined,
+                    label: 'Kamera',
+                    onTap: () async => pickImage(ImageSource.camera),
+                  ),
+                ],
+              ),
 
               const Spacer(),
-              if (image != null)
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    TextButton(
-                      onPressed: () => Navigator.pop(context),
-                      child: Text(
-                        'İptal',
-                        style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                    SizedBox(width: context.cLowValue),
-                    ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Theme.of(context).colorScheme.primary,
-                      ),
-                      onPressed: () async {
-                        await context.read<ProfileCubit>().confirmPickedImage(
-                          image,
-                        );
-                        if (context.mounted) {
-                          Navigator.pop(context);
-                        }
-                      },
-                      child: Text(
-                        'Onayla',
-                        style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                          fontWeight: FontWeight.bold,
-                          color: Theme.of(context).colorScheme.onSurface,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              SizedBox(height: context.cLowValue),
             ],
           ),
         ),

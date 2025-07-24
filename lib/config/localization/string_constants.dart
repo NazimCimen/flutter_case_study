@@ -71,4 +71,25 @@ final class StringConstants {
   static String get uploadPhotosTitle => 'uploadPhotosTitle'.tr();
   static String get uploadPhotosSubtitle => 'uploadPhotosSubtitle'.tr();
   static String get continueButton => 'continueButton'.tr();
-}
+
+  // Offer Sheet Header
+  static String get offerSheetHeaderTitle => 'offerSheetHeaderTitle'.tr();
+  static String get offerSheetHeaderSubtitle => 'offerSheetHeaderSubtitle'.tr();
+
+  // Offer Sheet Bonuses Section
+  static String get bonusesSectionTitle => 'bonusesSectionTitle'.tr();
+  static String get bonusPremiumAccount => 'bonusPremiumAccount'.tr();
+  static String get bonusMoreMatches => 'bonusMoreMatches'.tr();
+  static String get bonusHighlight => 'bonusHighlight'.tr();
+  static String get bonusMoreLikes => 'bonusMoreLikes'.tr();
+
+  // Token Card Labels
+  static String get tokenLabel => 'tokenLabel'.tr();
+  static String get perWeekLabel => 'perWeekLabel'.tr();
+
+  // Token Packages
+  static String get selectTokenPackage => 'selectTokenPackage'.tr();
+
+  // Offer Sheet Button
+  static String get seeAllTokens => 'seeAllTokens'.tr();
+} 

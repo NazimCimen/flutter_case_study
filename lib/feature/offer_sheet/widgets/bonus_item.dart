@@ -1,6 +1,7 @@
 part of '../offer_sheet.dart';
 
-class _BonusItem extends StatelessWidget {
+// This widget displays a single bonus item with an icon and a label.
+final class _BonusItem extends StatelessWidget {
   const _BonusItem({required this.icon, required this.label});
   final ImageEnums icon;
   final String label;
@@ -14,8 +15,8 @@ class _BonusItem extends StatelessWidget {
             children: [
               Image.asset(
                 ImageEnums.bg_sheet_icon.toPathPng,
-                width: 60,
-                height: 60,
+                width: context.cLargeValue * 2.5,
+                height: context.cLargeValue * 2.5,
                 fit: BoxFit.cover,
               ),
               Positioned.fill(

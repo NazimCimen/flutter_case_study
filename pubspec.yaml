@@ -90,7 +90,11 @@ flutter:
         - asset: assets/fonts/Euclid Circular A Light Italic.ttf
           weight: 300
           style: italic
-      
+    - family: Roboto
+      fonts:
+        - asset: assets/fonts/Montserrat-Black.ttf
+          weight: 900
+
   assets:
     - assets/images/
     - assets/lang/
