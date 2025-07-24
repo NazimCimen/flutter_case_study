@@ -20,68 +20,72 @@ class ProfileDetailView extends StatelessWidget {
         backgroundColor: Colors.black,
         appBar: const CustomProfileAppBar(),
         body: SafeArea(
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: context.cMediumValue * 2),
-            child: Column(
-              children: [
-                SizedBox(height: context.cLargeValue * 2),
-      
-                // Title text
-                Text(
-                  StringConstants.uploadPhotosTitle,
-                  textAlign: TextAlign.center,
-                  style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                    color: Colors.white,
-                    fontWeight: FontWeight.w600,
-                    fontSize: 18,
-                  ),
+          child: BlocBuilder<ProfileCubit, ProfileState>(
+            builder: (context, state) {
+              final selectedImage = state is ProfileImageUpdated
+                  ? state.image
+                  : null;
+
+              return Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: context.cMediumValue * 2,
                 ),
-      
-                SizedBox(height: context.cMediumValue),
-      
-                // Subtitle text
-                Text(
-                  StringConstants.uploadPhotosSubtitle,
-                  textAlign: TextAlign.center,
-                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                    color: Colors.white,
-                    fontWeight: FontWeight.w400,
-                    fontSize: 13,
-                  ),
-                ),
-      
-                SizedBox(height: context.cLargeValue * 3),
-      
-                // Upload area
-                Center(
-                  child: GestureDetector(
-                    onTap: () {
-                      _showPickImageSheet(context).then((value) {
-                        if (context.mounted) {
-                          if (value is File?) {
-                            context.read<ProfileCubit>().confirmPickedImage(
-                              value,
-                            );
-                          }
-                        }
-                      });
-                    },
-                    child: Container(
-                      width: 165,
-                      height: 165,
-                      decoration: BoxDecoration(
-                        color: AppColors.white.withOpacity(0.1),
-                        borderRadius: BorderRadius.circular(31),
-                        border: Border.all(
-                          color: AppColors.white.withOpacity(0.1),
-                          width: 1.55,
-                        ),
+                child: Column(
+                  children: [
+                    SizedBox(height: context.cLargeValue * 2),
+
+                    // Title text
+                    Text(
+                      StringConstants.uploadPhotosTitle,
+                      textAlign: TextAlign.center,
+                      style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                        color: Colors.white,
+                        fontWeight: FontWeight.w600,
+                        fontSize: 18,
                       ),
-                      child: BlocSelector<ProfileCubit, ProfileState, File?>(
-                        selector: (state) =>
-                            state is ProfileImageUpdated ? state.image : null,
-                        builder: (context, state) {
-                          return state == null
+                    ),
+
+                    SizedBox(height: context.cMediumValue),
+
+                    // Subtitle text
+                    Text(
+                      StringConstants.uploadPhotosSubtitle,
+                      textAlign: TextAlign.center,
+                      style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                        color: Colors.white,
+                        fontWeight: FontWeight.w400,
+                        fontSize: 13,
+                      ),
+                    ),
+
+                    SizedBox(height: context.cLargeValue * 3),
+
+                    // Upload area
+                    Center(
+                      child: GestureDetector(
+                        onTap: () {
+                          _showPickImageSheet(context).then((value) {
+                            if (context.mounted) {
+                              if (value is File?) {
+                                context.read<ProfileCubit>().confirmPickedImage(
+                                  value,
+                                );
+                              }
+                            }
+                          });
+                        },
+                        child: Container(
+                          width: 165,
+                          height: 165,
+                          decoration: BoxDecoration(
+                            color: AppColors.white.withOpacity(0.1),
+                            borderRadius: BorderRadius.circular(31),
+                            border: Border.all(
+                              color: AppColors.white.withOpacity(0.1),
+                              width: 1.55,
+                            ),
+                          ),
+                          child: selectedImage == null
                               ? Icon(
                                   Icons.add,
                                   size: context.cXLargeValue,
@@ -89,59 +93,63 @@ class ProfileDetailView extends StatelessWidget {
                                 )
                               : ClipRRect(
                                   borderRadius: BorderRadius.circular(31),
-                                  child: Image.file(state, fit: BoxFit.cover),
-                                );
-                        },
+                                  child: Image.file(
+                                    selectedImage,
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                        ),
                       ),
                     ),
-                  ),
-                ),
-                const Spacer(),
-                BlocSelector<ProfileCubit, ProfileState, File?>(
-                  selector: (state) =>
-                      state is ProfileImageUpdated ? state.image : null,
-                  builder: (context, state) => state == null
-                      ? const SizedBox.shrink()
-                      : Row(
-                          children: [
-                            Expanded(
-                              child: CustomButtonWidget(
-                                onPressed: () {
-                                  _showPickImageSheet(context).then((value) {
-                                    if (context.mounted) {
-                                      if (value is File?) {
-                                        context
-                                            .read<ProfileCubit>()
-                                            .confirmPickedImage(value);
-                                      }
+                    const Spacer(),
+
+                    // Action buttons
+                    if (selectedImage != null)
+                      Row(
+                        children: [
+                          Expanded(
+                            child: CustomButtonWidget(
+                              onPressed: () {
+                                _showPickImageSheet(context).then((value) {
+                                  if (context.mounted) {
+                                    if (value is File?) {
+                                      context
+                                          .read<ProfileCubit>()
+                                          .confirmPickedImage(value);
                                     }
-                                  });
-                                },
-                                text: 'Değiştir',
-                              ),
+                                  }
+                                });
+                              },
+                              text: 'Değiştir',
                             ),
-                            SizedBox(width: context.cMediumValue),
-                            Expanded(
-                              child: CustomButtonWidget(
-                                onPressed: () {
-                                  context
-                                      .read<ProfileCubit>()
-                                      .removeProfileImage();
-                                },
-                                text: 'Kaldır',
-                              ),
+                          ),
+                          SizedBox(width: context.cMediumValue),
+                          Expanded(
+                            child: CustomButtonWidget(
+                              onPressed: () {
+                                context
+                                    .read<ProfileCubit>()
+                                    .removeProfileImage();
+                              },
+                              text: 'Kaldır',
                             ),
-                          ],
-                        ),
+                          ),
+                        ],
+                      ),
+
+                    SizedBox(height: context.cMediumValue),
+                    CustomButtonWidget(
+                      onPressed: () {
+                        context.read<ProfileCubit>().updateProfileImage(
+                          selectedImage,
+                        );
+                      },
+                      text: StringConstants.continueButton,
+                    ),
+                  ],
                 ),
-      
-                SizedBox(height: context.cMediumValue),
-                CustomButtonWidget(
-                  onPressed: () {},
-                  text: StringConstants.continueButton,
-                ),
-              ],
-            ),
+              );
+            },
           ),
         ),
       ),

@@ -43,5 +43,6 @@
   "tokenLabel": "Jeton",
   "perWeekLabel": "Başına haftalık",
   "selectTokenPackage": "Kilidi açmak için bir jeton paketi seçin",
-  "seeAllTokens": "Tüm Jetonları Gör"
+  "seeAllTokens": "Tüm Jetonları Gör",
+  "profileImageCropTitle": "Profil Fotoğrafını Düzenle"
 } 

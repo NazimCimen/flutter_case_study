@@ -43,5 +43,6 @@
   "tokenLabel": "Token",
   "perWeekLabel": "Per week",
   "selectTokenPackage": "Select a token package to unlock",
-  "seeAllTokens": "See All Tokens"
+  "seeAllTokens": "See All Tokens",
+  "profileImageCropTitle": "Edit Profile Photo"
 } 

@@ -92,4 +92,7 @@ final class StringConstants {
 
   // Offer Sheet Button
   static String get seeAllTokens => 'seeAllTokens'.tr();
+
+  // Profile Image Crop
+  static String get profileImageCropTitle => 'profileImageCropTitle'.tr();
 } 

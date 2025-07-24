@@ -51,7 +51,7 @@ class _ProfileViewState extends State<ProfileView> {
               if (state is ProfileLoading) {
                 return const Center(child: CircularProgressIndicator());
               }
-              
+
               if (state is ProfileError) {
                 return Center(
                   child: Column(
@@ -60,14 +60,15 @@ class _ProfileViewState extends State<ProfileView> {
                       Text('Error: ${state.message}'),
                       const SizedBox(height: 16),
                       ElevatedButton(
-                        onPressed: () => context.read<ProfileCubit>().loadProfile(),
+                        onPressed: () =>
+                            context.read<ProfileCubit>().loadProfile(),
                         child: const Text('Retry'),
                       ),
                     ],
                   ),
                 );
               }
-              
+
               if (state is ProfileLoaded) {
                 return Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -84,7 +85,7 @@ class _ProfileViewState extends State<ProfileView> {
                   ],
                 );
               }
-              
+
               return const Center(child: Text('No user data'));
             },
           ),
@@ -97,10 +98,7 @@ class _ProfileViewState extends State<ProfileView> {
 class ProfileHeader extends StatelessWidget {
   final UserEntity user;
 
-  const ProfileHeader({
-    super.key,
-    required this.user,
-  });
+  const ProfileHeader({required this.user, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -109,12 +107,12 @@ class ProfileHeader extends StatelessWidget {
         // Profil Fotoğrafı
         CircleAvatar(
           radius: 30,
-          backgroundImage: user.photoUrl != null 
-            ? NetworkImage(user.photoUrl!)
-            : null,
-          child: user.photoUrl == null 
-            ? const Icon(Icons.person, size: 30)
-            : null,
+          backgroundImage: user.photoUrl != null
+              ? NetworkImage(user.photoUrl!)
+              : null,
+          child: user.photoUrl == null
+              ? const Icon(Icons.person, size: 30)
+              : null,
         ),
         SizedBox(width: context.cLowValue),
         // İsim ve ID
