@@ -21,13 +21,12 @@ mixin UploadProfileImageMixin on State<UploadProfileImageSheet> {
         uiSettings: [
           AndroidUiSettings(
             toolbarTitle: 'StringConstants.profileImageCropTitle',
-            toolbarColor: AppColors.primaryColor,
+            toolbarColor: AppColors.background,
             toolbarWidgetColor: Colors.white,
             initAspectRatio: CropAspectRatioPreset.square,
             lockAspectRatio: true,
-            
-            
-
+            statusBarColor: AppColors.background,
+            hideBottomControls: true,
           ),
           IOSUiSettings(
             title: 'StringConstants.profileImageCropTitle',
