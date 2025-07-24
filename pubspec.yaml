@@ -1,0 +1,96 @@
+name: case_study
+description: "A new Flutter project."
+
+publish_to: 'none' 
+
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.8.1
+
+dependencies:
+  flutter:
+    sdk: flutter
+ # Core
+  mockito: ^5.4.4 # Used to test the app and improve the code quality
+  provider: ^6.1.2 # State management library
+  dartz: ^0.10.1 # Functional programming library for Dart
+  get_it: ^7.7.0 # Service locator for dependency injection
+  uuid: ^4.5.0 # Generates unique IDs for objects or entities
+  json_annotation: 4.9.0 # Enables code generation for JSON serialization/deserialization
+  equatable: ^2.0.5 # used to prevent object reference shifts
+  internet_connection_checker: ^1.0.0+1 # Checks for active internet connections
+  dio: ^5.8.0+1
+
+  # Config
+  easy_localization: ^3.0.7+1 # Simplifies localization and internationalization of the app
+  intl: ^0.20.2 # Provides internationalization and localization facilities
+
+  # Utils
+  image_picker: ^1.1.2 # Enables image picking from gallery or camera
+  infinite_scroll_pagination: ^4.1.0
+  cached_network_image: ^3.4.1
+  image_cropper: ^9.1.0
+
+
+
+  # Ui
+  cupertino_icons: ^1.0.6 # Cupertino style icons for iOS design
+  google_fonts: ^6.2.1 # Allows the use of fonts from Google Fonts
+  lottie: ^3.3.1
+  animate_do: ^3.3.4
+  shimmer: ^3.0.0
+
+  # Cache
+  hive: ^2.2.3 # A fast and lightweight NoSQL database for local data storage
+  hive_flutter: ^1.1.0 # Provides simple and secure data storage with Hive in Flutter applications
+  encrypt: ^5.0.3 # Used for data encryption
+  flutter_secure_storage: ^9.2.2 # Secure storage for sensitive data (e.g., encrypted data)
+  flutter_bloc: ^9.1.1
+  device_preview: ^1.3.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  json_serializable: ^6.8.0 # Code generator for JSON serialization
+  build_runner: ^2.3.3 # Build system for Dart to generate code
+  very_good_analysis: ^6.0.0 # Linter rules for code quality and consistency
+  hive_generator: ^2.0.1 # Generates TypeAdapter code for Hive database
+
+
+flutter:
+  uses-material-design: true
+  fonts:
+    - family: EuclidCircularA
+      fonts:
+        - asset: assets/fonts/Euclid Circular A Regular.ttf
+          weight: 400
+        - asset: assets/fonts/Euclid Circular A Medium.ttf
+          weight: 500
+        - asset: assets/fonts/Euclid Circular A SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/Euclid Circular A Bold.ttf
+          weight: 700
+        - asset: assets/fonts/Euclid Circular A Light.ttf
+          weight: 300
+        # italic fonts:
+        - asset: assets/fonts/Euclid Circular A Italic.ttf
+          weight: 400
+          style: italic
+        - asset: assets/fonts/Euclid Circular A Medium Italic.ttf
+          weight: 500
+          style: italic
+        - asset: assets/fonts/Euclid Circular A SemiBold Italic.ttf
+          weight: 600
+          style: italic
+        - asset: assets/fonts/Euclid Circular A Bold Italic.ttf
+          weight: 700
+          style: italic
+        - asset: assets/fonts/Euclid Circular A Light Italic.ttf
+          weight: 300
+          style: italic
+      
+  assets:
+    - assets/images/
+    - assets/lang/
