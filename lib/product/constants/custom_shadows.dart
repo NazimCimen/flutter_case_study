@@ -20,7 +20,7 @@ class CustomShadows {
       ),
       gradient: RadialGradient(
         center: Alignment.topCenter,
-        radius: 1.5,
+        radius: 0.9,
         colors: [
           AppColors.primaryColor.withValues(alpha: 0.2),
           AppColors.primaryColor.withValues(alpha: 0.1),

@@ -7,6 +7,8 @@ class _TokenPackages extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
+        SizedBox(height: context.cMediumValue),
+
         Text(
           'Kilidi açmak için bir jeton paketi seçin',
           style: Theme.of(context).textTheme.titleMedium?.copyWith(
@@ -16,10 +18,10 @@ class _TokenPackages extends StatelessWidget {
           ),
           textAlign: TextAlign.center,
         ),
-        SizedBox(height: context.cMediumValue),
+        SizedBox(height: context.cLargeValue),
         Row(
           children: [
-            Expanded(
+            const Expanded(
               child: _TokenCard(
                 original: '200',
                 total: '330',
@@ -29,7 +31,7 @@ class _TokenPackages extends StatelessWidget {
               ),
             ),
             SizedBox(width: context.cMediumValue),
-            Expanded(
+            const Expanded(
               child: _TokenCard(
                 original: '2000',
                 total: '3375',
@@ -39,7 +41,7 @@ class _TokenPackages extends StatelessWidget {
               ),
             ),
             SizedBox(width: context.cMediumValue),
-            Expanded(
+            const Expanded(
               child: _TokenCard(
                 original: '1000',
                 total: '1350',
@@ -50,6 +52,7 @@ class _TokenPackages extends StatelessWidget {
             ),
           ],
         ),
+        SizedBox(height: context.cMediumValue),
       ],
     );
   }

@@ -19,61 +19,44 @@ class OfferSheet extends StatelessWidget {
   Widget build(BuildContext context) {
     return BackdropFilter(
       filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
-      child: Stack(
-        children: [
-          // Red shadow background
-          Positioned.fill(
-            child: CustomShadows.redShadowContainer(context),
-          ),
-          
-          // Main content
-          Container(
-            decoration: BoxDecoration(
-              color: Theme.of(context).scaffoldBackgroundColor,
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(context.cLargeValue),
-                topRight: Radius.circular(context.cLargeValue),
-              ),
+      child: SafeArea(
+        child: Container(
+          decoration: BoxDecoration(
+            color: Theme.of(context).scaffoldBackgroundColor,
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(context.cLargeValue),
+              topRight: Radius.circular(context.cLargeValue),
             ),
-            child: IntrinsicHeight(
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
+          ),
+          child: IntrinsicHeight(
+            child: Flexible(
+              child: Stack(
                 children: [
-                  // Handle bar
-                  Container(
-                    margin: EdgeInsets.only(top: context.cMediumValue),
-                    width: 40,
-                    height: 4,
-                    decoration: BoxDecoration(
-                      color: Colors.grey[600],
-                      borderRadius: BorderRadius.circular(2),
-                    ),
+                  Positioned.fill(
+                    child: CustomShadows.redShadowContainer(context),
                   ),
+                  SingleChildScrollView(
+                    child: Padding(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: context.cMediumValue,
+                      ),
+                      child: Column(
+                        children: [
+                          // Title and Subtitle
+                          const _Header(),
 
-                  // Content
-                  Flexible(
-                    child: SingleChildScrollView(
-                      child: Padding(
-                        padding: EdgeInsets.symmetric(
-                          horizontal: context.cMediumValue,
-                        ),
-                        child: Column(
-                          children: [
-                            // Title and Subtitle
-                            const _Header(),
+                          // Bonuses Section
+                          const _BonusesSection(),
 
-                            // Bonuses Section
-                            const _BonusesSection(),
-
-                            // Token Packages
-                            const _TokenPackages(),
-                            // Call to Action Button
-                            CustomButtonWidget(
-                              onPressed: () {},
-                              text: 'Tüm Jetonları Gör',
-                            ),
-                          ],
-                        ),
+                          // Token Packages
+                          const _TokenPackages(),
+                          // Call to Action Button
+                          CustomButtonWidget(
+                            onPressed: () {},
+                            text: 'Tüm Jetonları Gör',
+                          ),
+                          SizedBox(height: context.cLowValue),
+                        ],
                       ),
                     ),
                   ),
@@ -81,9 +64,8 @@ class OfferSheet extends StatelessWidget {
               ),
             ),
           ),
-        ],
+        ),
       ),
     );
   }
-
 }
