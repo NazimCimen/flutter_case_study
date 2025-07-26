@@ -12,11 +12,17 @@ import 'package:case_study/feature/home/data/data_source/home_remote_data_source
 import 'package:case_study/feature/home/domain/repository/home_repository.dart';
 import 'package:case_study/feature/home/data/repository/home_repository_impl.dart';
 import 'package:case_study/feature/home/domain/usecase/get_movie_list_usecase.dart';
+import 'package:case_study/feature/home/domain/usecase/toggle_favorite_usecase.dart';
 import 'package:case_study/feature/home/presentation/cubit/home_cubit.dart';
 import 'package:case_study/feature/navbar/viewmodel/navbar_view_model.dart';
 import 'package:case_study/core/services/token_services.dart';
-import 'package:case_study/core/state/user_cubit.dart';
+import 'package:case_study/feature/shared/state/user_cubit.dart';
 import 'package:case_study/feature/profile/presentation/cubit/profile_cubit.dart';
+import 'package:case_study/feature/profile/domain/repository/profile_repository.dart';
+import 'package:case_study/feature/profile/data/repository/profile_repository_impl.dart';
+import 'package:case_study/feature/profile/data/datasource/profile_remote_data_source.dart';
+import 'package:case_study/feature/profile/domain/usecase/update_profile_image_usecase.dart';
+import 'package:case_study/feature/profile/domain/usecase/get_favorite_movies_usecase.dart';
 
 final getIt = GetIt.instance;
 
@@ -74,15 +80,43 @@ void setupDI() {
     ..registerLazySingleton<GetMovieListUseCase>(
       () => GetMovieListUseCase(repository: getIt<HomeRepository>()),
     )
+    ..registerLazySingleton<ToggleFavoriteUseCase>(
+      () => ToggleFavoriteUseCase(repository: getIt<HomeRepository>()),
+    )
     ..registerFactory<HomeCubit>(
-      () => HomeCubit(getMovieListUseCase: getIt<GetMovieListUseCase>()),
+      () => HomeCubit(
+        getMovieListUseCase: getIt<GetMovieListUseCase>(),
+       toggleFavoriteUseCase: getIt<ToggleFavoriteUseCase>(),
+      ),
     )
     // Navbar Feature Dependencies
     ..registerFactory<NavBarCubit>(
       () => NavBarCubit(),
     )
     // Profile Feature Dependencies
+    ..registerLazySingleton<ProfileRemoteDataSource>(
+      () => ProfileRemoteDataSourceImpl(
+        dio: getIt<Dio>(),
+        tokenService: getIt<TokenService>(),
+      ),
+    )
+    ..registerLazySingleton<ProfileRepository>(
+      () => ProfileRepositoryImpl(
+        remoteDataSource: getIt<ProfileRemoteDataSource>(),
+        networkInfo: getIt<INetworkInfo>(),
+      ),
+    )
+    ..registerLazySingleton<UpdateProfileImageUseCase>(
+      () => UpdateProfileImageUseCase(repository: getIt<ProfileRepository>()),
+    )
+    ..registerLazySingleton<GetFavoriteMoviesUseCase>(
+      () => GetFavoriteMoviesUseCase(repository: getIt<ProfileRepository>()),
+    )
     ..registerFactory<ProfileCubit>(
-      () => ProfileCubit(userCubit: getIt<UserCubit>()),
+      () => ProfileCubit(
+        userCubit: getIt<UserCubit>(),
+        updateProfileImageUseCase: getIt<UpdateProfileImageUseCase>(),
+        getFavoriteMoviesUseCase: getIt<GetFavoriteMoviesUseCase>(),
+      ),
     );
 }

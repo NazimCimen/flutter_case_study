@@ -10,6 +10,7 @@ mixin SignupMixin on State<SignUpView> {
   late final TextEditingController _nameSurnameController;
   late final TextEditingController _emailController;
   late final TextEditingController _passwordController;
+  late final TextEditingController _confirmPasswordController;
   bool isRequestAvailable = false;
   AutovalidateMode autoValidateMode = AutovalidateMode.disabled;
   bool _obscureText = true;
@@ -18,6 +19,9 @@ mixin SignupMixin on State<SignUpView> {
   TextEditingController get nameSurnameController => _nameSurnameController;
   TextEditingController get emailController => _emailController;
   TextEditingController get passwordController => _passwordController;
+  TextEditingController get confirmPasswordController =>
+      _confirmPasswordController;
+
   GlobalKey<FormState> get formKey => _formKey;
   bool get obscureText => _obscureText;
   bool get isTermsAgreed => _isTermsAgreed;
@@ -27,6 +31,7 @@ mixin SignupMixin on State<SignUpView> {
     _nameSurnameController = TextEditingController();
     _emailController = TextEditingController();
     _passwordController = TextEditingController();
+    _confirmPasswordController = TextEditingController();
     _formKey = GlobalKey<FormState>();
 
     super.initState();
@@ -38,6 +43,7 @@ mixin SignupMixin on State<SignUpView> {
     _emailController.dispose();
     _passwordController.dispose();
     _nameSurnameController.dispose();
+    _confirmPasswordController.dispose();
     super.dispose();
   }
 

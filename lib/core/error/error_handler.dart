@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:dartz/dartz.dart';
 import 'package:case_study/core/error/failure.dart';
-import 'package:case_study/feature/auth/data/model/user_model.dart';
+import 'package:case_study/feature/shared/data/model/user_model.dart';
 import 'package:case_study/config/localization/string_constants.dart';
 import 'package:flutter/foundation.dart';
 

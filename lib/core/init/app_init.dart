@@ -1,12 +1,10 @@
 import 'package:device_preview/device_preview.dart';
 import 'package:easy_localization/easy_localization.dart';
-import 'package:case_study/config/theme/theme_manager.dart';
 import 'package:case_study/di/di_container.dart';
 import 'package:flutter/material.dart';
 import 'package:case_study/main.dart';
 import 'package:flutter/services.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:provider/provider.dart';
 import 'package:case_study/config/localization/locale_constants.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:case_study/feature/auth/presentation/viewmodel/auth_cubit.dart';
@@ -16,8 +14,11 @@ import 'package:case_study/feature/home/presentation/cubit/home_cubit.dart';
 import 'package:case_study/feature/home/domain/usecase/get_movie_list_usecase.dart';
 import 'package:case_study/core/cache/cache_enum.dart';
 import 'package:case_study/feature/navbar/viewmodel/navbar_view_model.dart';
-import 'package:case_study/core/state/user_cubit.dart';
+import 'package:case_study/feature/shared/state/user_cubit.dart';
 import 'package:case_study/feature/profile/presentation/cubit/profile_cubit.dart';
+import 'package:case_study/feature/profile/domain/usecase/update_profile_image_usecase.dart';
+import 'package:case_study/feature/home/domain/usecase/toggle_favorite_usecase.dart';
+import 'package:case_study/feature/profile/domain/usecase/get_favorite_movies_usecase.dart';
 
 abstract class AppInit {
   Future<void> initialize();
@@ -36,44 +37,41 @@ class AppInitImpl extends AppInit {
       path: LocaleConstants.localePath,
       fallbackLocale: LocaleConstants.enLocale,
 
-      child: MultiProvider(
+      child: MultiBlocProvider(
         providers: [
-          ChangeNotifierProvider<ThemeManager>(
-            create: (context) => ThemeManager(),
+          // Auth Cubit - Global auth state management
+          BlocProvider<AuthCubit>(
+            create: (context) => AuthCubit(
+              loginUseCase: getIt<LoginUseCase>(),
+              signupUseCase: getIt<SignupUseCase>(),
+              userCubit: getIt<UserCubit>(),
+            ),
+          ),
+          // Home Cubit - Global home state management
+          BlocProvider<HomeCubit>(
+            create: (context) => HomeCubit(
+              getMovieListUseCase: getIt<GetMovieListUseCase>(),
+              toggleFavoriteUseCase: getIt<ToggleFavoriteUseCase>(),
+            ),
+          ),
+          // Main Layout Cubit - Global main layout state management
+          BlocProvider<NavBarCubit>(create: (context) => NavBarCubit()),
+
+          // User Cubit - Global user state management
+          BlocProvider<UserCubit>(create: (context) => getIt<UserCubit>()),
+
+          // Profile Cubit - Global profile state management
+          BlocProvider<ProfileCubit>(
+            create: (context) => ProfileCubit(
+              userCubit: getIt<UserCubit>(),
+              updateProfileImageUseCase: getIt<UpdateProfileImageUseCase>(),
+              getFavoriteMoviesUseCase: getIt<GetFavoriteMoviesUseCase>(),
+            ),
           ),
         ],
-        child: MultiBlocProvider(
-          providers: [
-            // Auth Cubit - Global auth state management
-            BlocProvider<AuthCubit>(
-              create: (context) => AuthCubit(
-                loginUseCase: getIt<LoginUseCase>(),
-                signupUseCase: getIt<SignupUseCase>(),
-                userCubit: getIt<UserCubit>(),
-              ),
-            ),
-            // Home Cubit - Global home state management
-            BlocProvider<HomeCubit>(
-              create: (context) =>
-                  HomeCubit(getMovieListUseCase: getIt<GetMovieListUseCase>()),
-            ),
-            // Main Layout Cubit - Global main layout state management
-            BlocProvider<NavBarCubit>(create: (context) => NavBarCubit()),
-
-            // User Cubit - Global user state management
-            BlocProvider<UserCubit>(create: (context) => getIt<UserCubit>()),
-            
-            // Profile Cubit - Global profile state management
-            BlocProvider<ProfileCubit>(
-              create: (context) => ProfileCubit(
-                userCubit: getIt<UserCubit>(),
-              ),
-            ),
-          ],
-          child: DevicePreview(
-            enabled: false,
-            builder: (context) => const MyApp(),
-          ),
+        child: DevicePreview(
+          enabled: false,
+          builder: (context) => const MyApp(),
         ),
       ),
     );
@@ -93,16 +91,12 @@ class AppInitImpl extends AppInit {
     await _initializeHiveBoxes();
 
     setupDI();
-    await ThemeManager().loadTheme();
   }
 
   /// Initialize Hive boxes for cache management
   Future<void> _initializeHiveBoxes() async {
     // Open secure storage box for encrypted data
     await Hive.openBox<String>(CacheHiveBoxEnum.secureStorage.name);
-
-    // Open app settings box for regular data
-    await Hive.openBox(CacheHiveBoxEnum.appSettings.name);
   }
 
   @override

@@ -13,12 +13,7 @@ class CustomSnackBars {
       SnackBar(
         behavior: SnackBarBehavior.floating,
         backgroundColor: AppColors.primaryColor,
-        content: Text(
-          text,
-          style: Theme.of(
-            context,
-          ).textTheme.bodyLarge?.copyWith(color: AppColors.background),
-        ),
+        content: Text(text, style: Theme.of(context).textTheme.bodyLarge),
         duration: const Duration(seconds: 2),
       ),
     );

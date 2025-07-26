@@ -1,4 +1,4 @@
-import 'package:case_study/feature/auth/domain/entity/user_entity.dart';
+import 'package:case_study/feature/shared/domain/entity/user_entity.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'user_model.g.dart';

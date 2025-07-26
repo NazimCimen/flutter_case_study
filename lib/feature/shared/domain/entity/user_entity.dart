@@ -23,4 +23,6 @@ class UserEntity extends Equatable {
     email: email ?? this.email,
     photoUrl: photoUrl ?? this.photoUrl,
   );
+
+
 }

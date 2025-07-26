@@ -35,8 +35,8 @@ mixin SplashMixin on State<SplashView> {
         if (token == null || token.isEmpty) {
           NavigatorService.pushNamedAndRemoveUntil(AppRoutes.loginView);
         } else {
-          /// NavigatorService.pushNamedAndRemoveUntil(AppRoutes.navBarView);
-          NavigatorService.pushNamedAndRemoveUntil(AppRoutes.navBarView);
+           NavigatorService.pushNamedAndRemoveUntil(AppRoutes.loginView);
+          //NavigatorService.pushNamedAndRemoveUntil(AppRoutes.navBarView);
         }
       },
     );

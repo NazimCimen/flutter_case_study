@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:case_study/feature/auth/domain/entity/user_entity.dart';
+import 'package:case_study/feature/shared/domain/entity/user_entity.dart';
 
 abstract class UserState extends Equatable {
   const UserState();

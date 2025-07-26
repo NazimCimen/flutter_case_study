@@ -46,12 +46,12 @@ class CustomInputDecoration {
     ),
     suffixIcon: isPassword ?? false
         ? IconButton(
-            onPressed: changeObsecureText,
+            onPressed: changeObsecureText ?? () {},
             icon: Icon(
               obsecureText ?? false ? Icons.visibility_off : Icons.visibility,
               color: AppColors.white.withOpacity(0.5),
             ),
           )
-        : null,
+        : const SizedBox.shrink(),
   );
 }

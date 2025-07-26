@@ -1,7 +1,6 @@
-import 'dart:io';
-
 import 'package:equatable/equatable.dart';
-import 'package:case_study/feature/auth/domain/entity/user_entity.dart';
+import 'package:case_study/feature/shared/domain/entity/user_entity.dart';
+import 'package:case_study/feature/shared/domain/entity/movie_entity.dart';
 
 abstract class ProfileState extends Equatable {
   const ProfileState();
@@ -20,14 +19,32 @@ class ProfileLoading extends ProfileState {
 
 class ProfileLoaded extends ProfileState {
   final UserEntity user;
+  final List<MovieEntity>? favoriteMovies;
+  final bool isLoadingFavoriteMovies;
+  final String? favoriteMoviesError;
 
-  const ProfileLoaded(this.user);
+  const ProfileLoaded(
+    this.user, {
+    this.favoriteMovies,
+    this.isLoadingFavoriteMovies = false,
+    this.favoriteMoviesError,
+  });
 
   @override
-  List<Object?> get props => [user];
+  List<Object?> get props => [user, favoriteMovies, isLoadingFavoriteMovies, favoriteMoviesError];
 
-  ProfileLoaded copyWith({UserEntity? user}) {
-    return ProfileLoaded(user ?? this.user);
+  ProfileLoaded copyWith({
+    UserEntity? user,
+    List<MovieEntity>? favoriteMovies,
+    bool? isLoadingFavoriteMovies,
+    String? favoriteMoviesError,
+  }) {
+    return ProfileLoaded(
+      user ?? this.user,
+      favoriteMovies: favoriteMovies ?? this.favoriteMovies,
+      isLoadingFavoriteMovies: isLoadingFavoriteMovies ?? this.isLoadingFavoriteMovies,
+      favoriteMoviesError: favoriteMoviesError ?? this.favoriteMoviesError,
+    );
   }
 }
 
@@ -40,11 +57,4 @@ class ProfileError extends ProfileState {
   List<Object?> get props => [message];
 }
 
-class ProfileImageUpdated extends ProfileState {
-  final File? image;
 
-  const ProfileImageUpdated(this.image);
-
-  @override
-  List<Object?> get props => [image];
-}

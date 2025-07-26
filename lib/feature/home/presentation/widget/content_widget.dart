@@ -2,8 +2,8 @@ part of '../view/home_view.dart';
 
 class _ContentWidget extends StatelessWidget {
   final MovieEntity movie;
-
-  const _ContentWidget({required this.movie});
+  final void Function(MovieEntity) updateMovie;
+  const _ContentWidget({required this.movie, required this.updateMovie});
 
   @override
   Widget build(BuildContext context) {
@@ -33,17 +33,33 @@ class _ContentWidget extends StatelessWidget {
           right: 14,
           bottom: 120,
           child: SafeArea(
-            child: Container(
-              height: 60,
-              width: 40,
-              decoration: BoxDecoration(
-                color: AppColors.black.withValues(alpha: 0.2),
-                border: Border.all(
-                  color: AppColors.white.withValues(alpha: 0.2),
+            child: GestureDetector(
+              onTap: () {
+                if (movie.id != null && movie.id!.isNotEmpty) {
+                  final updatedMovie = movie.copyWith(
+                    isFavorite: !movie.isFavorite,
+                  );
+                  updateMovie(updatedMovie);
+                }
+              },
+              child: Container(
+                height: 60,
+                width: 40,
+                decoration: BoxDecoration(
+                  color: AppColors.black.withValues(alpha: 0.2),
+                  border: Border.all(
+                    color: AppColors.white.withValues(alpha: 0.2),
+                  ),
+                  borderRadius: BorderRadius.circular(20),
                 ),
-                borderRadius: BorderRadius.circular(20),
+                child: Icon(
+                  movie.isFavorite == true
+                      ? Icons.favorite
+                      : Icons.favorite_border,
+                  size: 24,
+                  color: movie.isFavorite == true ? Colors.red : Colors.white,
+                ),
               ),
-              child: const Icon(Icons.favorite, size: 24),
             ),
           ),
         ),
@@ -90,9 +106,9 @@ class _ContentWidget extends StatelessWidget {
                           TextSpan(
                             children: [
                               TextSpan(
-                                text:
-                                    movie.description ??
-                                    'Community every territories dogpile so. Last they investigation model',
+                                text: (movie.description ?? '').length > 50 
+                                    ? '${(movie.description ?? '').substring(0, 50)}...'
+                                    : movie.description ?? '',
                                 style: Theme.of(context).textTheme.bodyMedium
                                     ?.copyWith(
                                       fontWeight: FontWeight.w400,
@@ -109,11 +125,12 @@ class _ContentWidget extends StatelessWidget {
                                     ?.copyWith(
                                       fontWeight: FontWeight.w700,
                                       fontSize: 13,
+                                      color: AppColors.white,
                                     ),
                               ),
                             ],
                           ),
-                          maxLines: 2,
+                          maxLines: 3,
                           overflow: TextOverflow.ellipsis,
                         ),
                       ],
@@ -136,24 +153,30 @@ class _ImageWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return url != null
-        ? Image.network(
-            url!,
+    return url != null && url!.isNotEmpty
+        ? CachedNetworkImage(
+            imageUrl: StringUtils.fixImageUrl(url!),
             fit: BoxFit.cover,
             width: double.infinity,
             height: double.infinity,
-            loadingBuilder: (context, child, progress) {
-              if (progress == null) return child;
-              return const Center(child: CircularProgressIndicator());
-            },
-            errorBuilder: (context, error, stackTrace) =>
-                Container(color: Colors.grey[300]),
+            placeholder: (context, url) => Container(
+              color: Colors.grey[300],
+              child: const Center(child: CircularProgressIndicator()),
+            ),
+            errorWidget: (context, url, error) => Container(
+              color: Colors.grey[300],
+              child: const Center(
+                child: Icon(Icons.error, color: Colors.grey, size: 50),
+              ),
+            ),
+            memCacheWidth: 800,
+            memCacheHeight: 1200,
           )
-        : Image.asset(
-            'assets/images/default_movie.jpg',
-            fit: BoxFit.cover,
-            width: double.infinity,
-            height: double.infinity,
+        : Container(
+            color: Colors.grey[300],
+            child: const Center(
+              child: Icon(Icons.movie, color: Colors.grey, size: 50),
+            ),
           );
   }
 }

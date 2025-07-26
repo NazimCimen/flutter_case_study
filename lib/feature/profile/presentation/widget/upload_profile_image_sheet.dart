@@ -1,8 +1,10 @@
+import 'dart:io';
 import 'package:case_study/config/theme/app_colors.dart';
+import 'package:case_study/config/localization/string_constants.dart';
 import 'package:flutter/material.dart';
+import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:case_study/core/size/constant_size.dart';
-import 'package:case_study/feature/profile/presentation/mixin/upload_profile_image_mixin.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:case_study/feature/profile/presentation/cubit/profile_cubit.dart';
 
@@ -15,8 +17,44 @@ class UploadProfileImageSheet extends StatefulWidget {
       _UploadProfileImageSheetState();
 }
 
-class _UploadProfileImageSheetState extends State<UploadProfileImageSheet>
-    with UploadProfileImageMixin {
+class _UploadProfileImageSheetState extends State<UploadProfileImageSheet> {
+  File? image;
+
+  /// Picks image from camera or gallery and crops it to square aspect ratio.
+  Future<void> pickImage(ImageSource source) async {
+    final picker = ImagePicker();
+    final pickedFile = await picker.pickImage(source: source);
+
+    if (pickedFile != null) {
+      final croppedFile = await ImageCropper().cropImage(
+        sourcePath: pickedFile.path,
+        aspectRatio: const CropAspectRatio(ratioX: 1, ratioY: 1),
+        uiSettings: [
+          AndroidUiSettings(
+            toolbarTitle: StringConstants.profileImageCropTitle,
+            toolbarColor: AppColors.background,
+            toolbarWidgetColor: Colors.white,
+            initAspectRatio: CropAspectRatioPreset.square,
+            lockAspectRatio: true,
+            statusBarColor: AppColors.background,
+            hideBottomControls: true,
+          ),
+          IOSUiSettings(
+            title: StringConstants.profileImageCropTitle,
+            aspectRatioLockEnabled: true,
+          ),
+        ],
+      );
+
+      if (croppedFile != null) {
+        image = File(croppedFile.path);
+      }
+      if (mounted) {
+        Navigator.pop(context, image);
+      }
+    }
+  }
+
   /// Builds the profile image change sheet with image picker options.
   @override
   Widget build(BuildContext context) {
@@ -100,19 +138,18 @@ class _ImageOptionButton extends StatelessWidget {
           ),
         ),
         child: Column(
-          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Icon(
               icon,
+              size: 32,
               color: Theme.of(context).colorScheme.onSurface,
-              size: 28,
             ),
             const SizedBox(height: 8),
             Text(
               label,
               style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                color: Theme.of(context).colorScheme.onSurface,
-                fontWeight: FontWeight.w600,
+                fontWeight: FontWeight.w500,
               ),
             ),
           ],

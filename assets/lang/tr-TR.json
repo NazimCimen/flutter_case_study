@@ -44,5 +44,16 @@
   "perWeekLabel": "Başına haftalık",
   "selectTokenPackage": "Kilidi açmak için bir jeton paketi seçin",
   "seeAllTokens": "Tüm Jetonları Gör",
-  "profileImageCropTitle": "Profil Fotoğrafını Düzenle"
+  "profileImageCropTitle": "Profil Fotoğrafını Düzenle",
+  "likedMoviesTitle": "Beğendiğim Filmler",
+  "addPhotoButton": "Fotoğraf Ekle",
+  "unknownUser": "Bilinmeyen Kullanıcı",
+  "userIdLabel": "ID",
+  "noUserData": "Kullanıcı verisi bulunamadı",
+  "retryButton": "Tekrar Dene",
+  "profilePhotoUpdateSuccess": "Profil fotoğrafı başarıyla güncellendi!",
+  "profilePhotoUpdateError": "Hata",
+  "changePhotoButton": "Değiştir",
+  "removePhotoButton": "Kaldır",
+  "updatingText": "Güncelleniyor..."
 } 

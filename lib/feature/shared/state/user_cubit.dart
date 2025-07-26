@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:case_study/feature/auth/domain/entity/user_entity.dart';
-import 'package:case_study/core/state/user_state.dart';
+import 'package:case_study/feature/shared/domain/entity/user_entity.dart';
+import 'package:case_study/feature/shared/state/user_state.dart';
 
 class UserCubit extends Cubit<UserState> {
   UserCubit() : super(const UserInitial());

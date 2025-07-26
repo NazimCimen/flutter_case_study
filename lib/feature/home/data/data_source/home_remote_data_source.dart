@@ -1,15 +1,16 @@
 import 'package:case_study/config/localization/string_constants.dart';
 import 'package:case_study/core/error/error_handler.dart';
 import 'package:case_study/core/error/failure.dart';
-import 'package:case_study/feature/home/data/model/movie_model.dart';
-import 'package:case_study/feature/home/domain/entity/movie_entity.dart';
+import 'package:case_study/feature/shared/data/model/movie_model.dart';
+import 'package:case_study/feature/shared/domain/entity/movie_entity.dart';
 import 'package:dio/dio.dart';
 import 'package:case_study/core/constants/api_constants.dart';
 import 'package:case_study/core/services/token_services.dart';
 import 'package:dartz/dartz.dart';
 
 abstract class HomeRemoteDataSource {
-  Future<Either<Failure, List<MovieEntity>?>> getMovieList({int page = 1});
+  Future<Either<Failure, List<MovieModel>?>> getMovieList({int page = 1});
+  Future<Either<Failure, bool>> toggleFavorite({required String movieId});
 }
 
 class HomeRemoteDataSourceImpl extends HomeRemoteDataSource {
@@ -19,7 +20,7 @@ class HomeRemoteDataSourceImpl extends HomeRemoteDataSource {
   HomeRemoteDataSourceImpl({required this.dio, required this.tokenService});
 
   @override
-  Future<Either<Failure, List<MovieEntity>?>> getMovieList({
+  Future<Either<Failure, List<MovieModel>?>> getMovieList({
     int page = 1,
   }) async {
     try {
@@ -48,6 +49,41 @@ class HomeRemoteDataSourceImpl extends HomeRemoteDataSource {
           return Right(moviesList);
         } else {
           return Left(ServerFailure(errorMessage: 'Failed to load movies'));
+        }
+      });
+    } on DioException catch (e) {
+      return ErrorHandler.handleDioException(e).fold(
+        (failure) => Left(failure),
+        (_) =>
+            Left(UnKnownFaliure(errorMessage: StringConstants.apiUnknownError)),
+      );
+    } catch (e) {
+      return Left(
+        UnKnownFaliure(errorMessage: StringConstants.apiUnknownError),
+      );
+    }
+  }
+
+  @override
+  Future<Either<Failure, bool>> toggleFavorite({
+    required String movieId,
+  }) async {
+    try {
+      final tokenResult = await tokenService.getToken();
+      return tokenResult.fold((failure) => Left(failure), (token) async {
+        final response = await dio.post(
+          '${ApiConstants.baseUrl}${ApiConstants.toggleFavoriteEndpoint}/$movieId',
+          options: Options(
+            headers: {
+              'Content-Type': ApiConstants.contentType,
+              'Authorization': '${ApiConstants.bearerPrefix}$token',
+            },
+          ),
+        );
+        if (response.statusCode == 200) {
+          return Right(true);
+        } else {
+          return Left(ServerFailure(errorMessage: 'Failed to toggle favorite'));
         }
       });
     } on DioException catch (e) {

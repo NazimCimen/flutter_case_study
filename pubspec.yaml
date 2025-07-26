@@ -14,7 +14,6 @@ dependencies:
     sdk: flutter
  # Core
   mockito: ^5.4.4 # Used to test the app and improve the code quality
-  provider: ^6.1.2 # State management library
   dartz: ^0.10.1 # Functional programming library for Dart
   get_it: ^7.7.0 # Service locator for dependency injection
   uuid: ^4.5.0 # Generates unique IDs for objects or entities

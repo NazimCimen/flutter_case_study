@@ -7,12 +7,12 @@ import 'package:flutter/material.dart';
 class CustomPasswordTextField extends StatelessWidget {
   final TextEditingController controller;
   final bool obsecureText;
-  final VoidCallback changeObsecureText;
+  final VoidCallback? changeObsecureText;
   final String? hintText;
   const CustomPasswordTextField({
     required this.controller,
     required this.obsecureText,
-    required this.changeObsecureText,
+    this.changeObsecureText,
     this.hintText,
     super.key,
   });
@@ -28,7 +28,7 @@ class CustomPasswordTextField extends StatelessWidget {
         context: context,
         hintText: hintText ?? StringConstants.passwordLabel,
         prefixIconPath: ImageEnums.ic_password.toPathPng,
-        isPassword: true,
+        isPassword: changeObsecureText != null,
         changeObsecureText: changeObsecureText,
         obsecureText: obsecureText,
       ),

@@ -1,11 +1,16 @@
 import 'package:case_study/feature/home/domain/usecase/get_movie_list_usecase.dart';
+import 'package:case_study/feature/home/domain/usecase/toggle_favorite_usecase.dart';
 import 'package:case_study/feature/home/presentation/cubit/home_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 final class HomeCubit extends Cubit<HomeState> {
   final GetMovieListUseCase getMovieListUseCase;
+  final ToggleFavoriteUseCase toggleFavoriteUseCase;
 
-  HomeCubit({required this.getMovieListUseCase}) : super(HomeInitial());
+  HomeCubit({
+    required this.getMovieListUseCase,
+    required this.toggleFavoriteUseCase,
+  }) : super(HomeInitial());
 
   /// Load movies when view is initialized
   Future<void> loadMovies({int page = 4}) async {
@@ -13,7 +18,7 @@ final class HomeCubit extends Cubit<HomeState> {
     final result = await getMovieListUseCase.call(page: page);
     result.fold(
       (failure) => emit(HomeError(failure.errorMessage)),
-      (movies) => emit(HomeSuccess(movies ?? [])),
+      (movies) => emit(HomeSuccess(movies)),
     );
   }
 
@@ -27,7 +32,16 @@ final class HomeCubit extends Cubit<HomeState> {
     final result = await getMovieListUseCase.call(page: page);
     return result.fold(
       (failure) => emit(HomeError(failure.errorMessage)),
-      (movies) => emit(HomeSuccess(movies ?? [])),
+      (movies) => emit(HomeSuccess(movies)),
     );
+  }
+
+  /// Toggle favorite status of a movie
+  Future<void> toggleFavorite(String? movieId) async {
+    if (movieId == null) return;
+    final result = await toggleFavoriteUseCase.call(movieId: movieId);
+    result.fold((failure) {
+      emit(HomeError(failure.errorMessage));
+    }, (success) {});
   }
 }

@@ -1,5 +1,5 @@
 import 'package:case_study/core/error/failure.dart';
-import 'package:case_study/feature/auth/domain/entity/user_entity.dart';
+import 'package:case_study/feature/shared/domain/entity/user_entity.dart';
 import 'package:equatable/equatable.dart';
 
 abstract class AuthState extends Equatable {}

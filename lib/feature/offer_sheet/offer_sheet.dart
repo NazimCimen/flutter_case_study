@@ -31,40 +31,38 @@ final class OfferSheet extends StatelessWidget {
             ),
           ),
           child: IntrinsicHeight(
-            child: Flexible(
-              child: Stack(
-                children: [
-                  Positioned.fill(
-                    child: CustomShadows.redShadowContainer(context),
-                  ),
-                  SingleChildScrollView(
-                    child: Padding(
-                      padding: EdgeInsets.symmetric(
-                        horizontal: context.cMediumValue,
-                      ),
-                      child: Column(
-                        children: [
-                          // Title and Subtitle
-                          const _Header(),
-
-                          // Bonuses Section
-                          const _BonusesSection(),
-
-                          // Token Packages
-                          const _TokenPackages(),
-
-                          // Call to Action Button
-                          CustomButtonWidget(
-                            onPressed: () {},
-                            text: StringConstants.seeAllTokens,
-                          ),
-                          SizedBox(height: context.cLowValue),
-                        ],
-                      ),
+            child: Stack(
+              children: [
+                Positioned.fill(
+                  child: CustomShadows.redShadowContainer(context),
+                ),
+                SingleChildScrollView(
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: context.cMediumValue,
+                    ),
+                    child: Column(
+                      children: [
+                        // Title and Subtitle
+                        const _Header(),
+            
+                        // Bonuses Section
+                        const _BonusesSection(),
+            
+                        // Token Packages
+                        const _TokenPackages(),
+            
+                        // Call to Action Button
+                        CustomButtonWidget(
+                          onPressed: () {},
+                          text: StringConstants.seeAllTokens,
+                        ),
+                        SizedBox(height: context.cLowValue),
+                      ],
                     ),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         ),

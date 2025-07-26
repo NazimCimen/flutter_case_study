@@ -34,6 +34,6 @@ final class CustomDarkTheme implements ApplicationTheme {
       thumbShape: const RoundSliderThumbShape(enabledThumbRadius: 10),
       overlayShape: const RoundSliderOverlayShape(overlayRadius: 20),
     ),
-    appBarTheme: const AppBarTheme(backgroundColor: Color(0xFF121212)),
+    appBarTheme: const AppBarTheme(backgroundColor: AppColors.background),
   );
 }

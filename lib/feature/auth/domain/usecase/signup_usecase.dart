@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:case_study/core/error/failure.dart';
-import 'package:case_study/feature/auth/domain/entity/user_entity.dart';
+import 'package:case_study/feature/shared/domain/entity/user_entity.dart';
 import 'package:case_study/feature/auth/domain/repository/auth_repository.dart';
 
 final class SignupUseCase {

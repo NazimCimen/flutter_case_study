@@ -1,4 +1,4 @@
-import 'package:case_study/feature/home/domain/entity/movie_entity.dart';
+import 'package:case_study/feature/shared/domain/entity/movie_entity.dart';
 import 'package:case_study/feature/home/presentation/cubit/home_cubit.dart';
 import 'package:case_study/feature/home/presentation/cubit/home_state.dart';
 import 'package:case_study/feature/home/presentation/view/home_view.dart';
@@ -25,6 +25,7 @@ mixin HomeViewMixin on State<HomeView> {
   }
 
   Future<void> fetchPage(BuildContext context, int pageKey) async {
+    if (!context.mounted) return;
     await context.read<HomeCubit>().fetchMoviesPage(pageKey);
     if (context.mounted) {
       final state = context.read<HomeCubit>().state;
@@ -41,6 +42,15 @@ mixin HomeViewMixin on State<HomeView> {
         pagingController.error = state.message;
       }
     }
+  }
+
+  void updatePagingItemList(MovieEntity movie) {
+    context.read<HomeCubit>().toggleFavorite(movie.id);
+    final movies = pagingController.itemList ?? [];
+    final updatedMovies = movies
+        .map((m) => m.id == movie.id ? movie : m)
+        .toList();
+    pagingController.itemList = updatedMovies;
   }
 
   @override

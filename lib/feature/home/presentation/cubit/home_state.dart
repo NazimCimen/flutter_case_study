@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:case_study/feature/home/domain/entity/movie_entity.dart';
+import 'package:case_study/feature/shared/domain/entity/movie_entity.dart';
 
 abstract class HomeState extends Equatable {
   const HomeState();

@@ -44,5 +44,16 @@
   "perWeekLabel": "Per week",
   "selectTokenPackage": "Select a token package to unlock",
   "seeAllTokens": "See All Tokens",
-  "profileImageCropTitle": "Edit Profile Photo"
+  "profileImageCropTitle": "Edit Profile Photo",
+  "likedMoviesTitle": "Liked Movies",
+  "addPhotoButton": "Add Photo",
+  "unknownUser": "Unknown User",
+  "userIdLabel": "ID",
+  "noUserData": "No user data found",
+  "retryButton": "Retry",
+  "profilePhotoUpdateSuccess": "Profile photo updated successfully!",
+  "profilePhotoUpdateError": "Error",
+  "changePhotoButton": "Change",
+  "removePhotoButton": "Remove",
+  "updatingText": "Updating..."
 } 

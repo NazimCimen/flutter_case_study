@@ -95,4 +95,19 @@ final class StringConstants {
 
   // Profile Image Crop
   static String get profileImageCropTitle => 'profileImageCropTitle'.tr();
+
+  // Profile View Messages
+  static String get likedMoviesTitle => 'likedMoviesTitle'.tr();
+  static String get addPhotoButton => 'addPhotoButton'.tr();
+  static String get unknownUser => 'unknownUser'.tr();
+  static String get userIdLabel => 'userIdLabel'.tr();
+  static String get noUserData => 'noUserData'.tr();
+  static String get retryButton => 'retryButton'.tr();
+
+  // Profile Detail View Messages
+  static String get profilePhotoUpdateSuccess => 'profilePhotoUpdateSuccess'.tr();
+  static String get profilePhotoUpdateError => 'profilePhotoUpdateError'.tr();
+  static String get changePhotoButton => 'changePhotoButton'.tr();
+  static String get removePhotoButton => 'removePhotoButton'.tr();
+  static String get updatingText => 'updatingText'.tr();
 } 

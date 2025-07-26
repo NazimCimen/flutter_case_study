@@ -127,9 +127,8 @@ class _SignUpViewState extends State<SignUpView> with SignupMixin {
 
                               // Confirm password input field
                               CustomPasswordTextField(
-                                controller: passwordController,
+                                controller: confirmPasswordController,
                                 obsecureText: obscureText,
-                                changeObsecureText: togglePasswordVisibility,
                                 hintText: StringConstants.confirmPasswordLabel,
                               ),
 

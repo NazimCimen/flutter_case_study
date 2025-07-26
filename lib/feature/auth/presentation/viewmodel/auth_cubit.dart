@@ -2,7 +2,7 @@ import 'package:case_study/core/error/failure.dart';
 import 'package:case_study/feature/auth/domain/usecase/login_usecase.dart';
 import 'package:case_study/feature/auth/domain/usecase/signup_usecase.dart';
 import 'package:case_study/feature/auth/presentation/viewmodel/auth_state.dart';
-import 'package:case_study/core/state/user_cubit.dart';
+import 'package:case_study/feature/shared/state/user_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 final class AuthCubit extends Cubit<AuthState> {
