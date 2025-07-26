@@ -6,14 +6,13 @@ A modern Flutter application built with Clean Architecture, featuring authentica
 
 ### App Screenshots
 <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 20px;">
-  <img src="assets/screenshots/ss_1.jpg" width="180" alt="Login Screen">
-  <img src="assets/screenshots/ss_2.jpg" width="180" alt="Register Screen">
-  <img src="assets/screenshots/ss_3.jpg" width="180" alt="Home Page">
-  <img src="assets/screenshots/ss_4.jpg" width="180" alt="Movie Details">
+  <img src="assets/screenshots/ss_1.jpg" width="180" alt="Splash Screen">
+  <img src="assets/screenshots/ss_2.jpg" width="180" alt="Login Screen">
+  <img src="assets/screenshots/ss_3.jpg" width="180" alt="Register Page">
+  <img src="assets/screenshots/ss_4.jpg" width="180" alt="Home Screen">
   <img src="assets/screenshots/ss_5.jpg" width="180" alt="Profile Page">
-  <img src="assets/screenshots/ss_6.jpg" width="180" alt="Favorite Movies">
-  <img src="assets/screenshots/ss_7.jpg" width="180" alt="Bottom Navigation">
-  <img src="assets/screenshots/ss_8.jpg" width="180" alt="Language Toggle">
+  <img src="assets/screenshots/ss_7.jpg" width="180" alt="Offer Sheet">
+  <img src="assets/screenshots/ss_8.jpg" width="180" alt="Update Profile">
 </div>
 
 ## 🚀 Features
@@ -76,6 +75,18 @@ Cross-feature shared resources:
 - **domain/**: Shared domain entities (UserEntity, MovieEntity)
 - **state/**: Global state management (UserCubit, UserState)
 
+### Config Layer (`lib/config/`)
+Application configuration and setup:
+- **theme/**: Custom dark theme with color schemes and typography
+- **localization/**: Multi-language support with string constants and locale management
+- **routes/**: Centralized routing with type-safe navigation service
+
+### Dependency Injection (`lib/di/`)
+Service locator pattern implementation:
+- **di_container.dart**: Centralized dependency injection using Get It
+- **Service Registration**: Automatic service registration and lazy loading
+- **Singleton Management**: Efficient memory usage with singleton services
+
 ## 🎯 State Management
 
 ### UserCubit Implementation
@@ -94,6 +105,16 @@ The `TokenService` class provides centralized token management with:
 - **Encrypted Storage**: Tokens stored using `EncryptedCacheManager` with AES encryption
 - **Repository Pattern**: Centralized token operations with error handling
 - **Automatic Cache Management**: Smart cache invalidation and refresh mechanisms
+
+## 🛡️ Error Handling
+
+### Centralized Error Management
+The application implements a comprehensive error handling strategy:
+- **Failure Types**: Custom failure classes (ServerFailure, ConnectionFailure, etc.)
+- **Error Handler**: Centralized DioException handling with proper error mapping
+- **User-Friendly Messages**: Localized error messages for better UX
+- **Graceful Degradation**: Proper error states and retry mechanisms
+- **Snackbar Integration**: Non-intrusive error notifications
 
 ## 📱 Core Requirements Implementation
 
