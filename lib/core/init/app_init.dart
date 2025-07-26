@@ -1,4 +1,3 @@
-import 'package:device_preview/device_preview.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:case_study/di/di_container.dart';
 import 'package:flutter/material.dart';
@@ -69,10 +68,7 @@ class AppInitImpl extends AppInit {
             ),
           ),
         ],
-        child: DevicePreview(
-          enabled: false,
-          builder: (context) => const MyApp(),
-        ),
+        child: const MyApp(),
       ),
     );
   }
