@@ -28,186 +28,193 @@ class SignUpView extends StatefulWidget {
 class _SignUpViewState extends State<SignUpView> with SignupMixin {
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<AuthCubit, AuthState>(
-      builder: (context, state) {
+    return BlocListener<AuthCubit, AuthState>(
+      listener: (context, state) {
         if (state is AuthError) {
-          return Scaffold(
-            body: Center(child: Text(state.failure.errorMessage)),
+          CustomSnackBars.showCustomBottomScaffoldSnackBar(
+            context: context,
+            text: state.failure.errorMessage,
           );
         }
-
         if (state is AuthSuccess) {
-          WidgetsBinding.instance.addPostFrameCallback((_) {
-            NavigatorService.pushNamedAndRemoveUntil(AppRoutes.navBarView);
-          });
+          NavigatorService.pushNamedAndRemoveUntil(AppRoutes.navBarView);
         }
-
-        return AbsorbPointer(
-          absorbing: state is AuthLoading && state.isLoading,
-          child: Scaffold(
-            body: SafeArea(
-              child: LayoutBuilder(
-                builder: (context, constraints) {
-                  return SingleChildScrollView(
-                    child: ConstrainedBox(
-                      constraints: BoxConstraints(
-                        minHeight: constraints.maxHeight,
-                      ),
-                      child: Padding(
-                        padding: EdgeInsets.symmetric(
-                          horizontal: context.cXLargeValue,
-                          vertical: context.cMediumValue,
+      },
+      child: BlocBuilder<AuthCubit, AuthState>(
+        builder: (context, state) {
+          return AbsorbPointer(
+            absorbing: state is AuthLoading && state.isLoading,
+            child: Scaffold(
+              body: SafeArea(
+                child: LayoutBuilder(
+                  builder: (context, constraints) {
+                    return SingleChildScrollView(
+                      child: ConstrainedBox(
+                        constraints: BoxConstraints(
+                          minHeight: constraints.maxHeight,
                         ),
-                        child: Form(
-                          key: formKey,
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: [
-                              // Header section with title and subtitle
-                              Text(
-                                textAlign: TextAlign.center,
-                                StringConstants.signUpTitle,
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .headlineMedium
-                                    ?.copyWith(
-                                      fontWeight: FontWeight.w600,
-                                      fontSize: 18,
-                                      height: 2,
-                                    ),
-                              ),
-                              Text(
-                                textAlign: TextAlign.center,
-                                StringConstants.signUpSubtitle,
-                                style: Theme.of(context).textTheme.bodyMedium
-                                    ?.copyWith(
-                                      color: AppColors.grey,
-                                      fontSize: 13,
-                                      fontWeight: FontWeight.w400,
-                                    ),
-                              ),
-
-                              SizedBox(height: context.cXLargeValue * 1.2),
-
-                              // Name and surname input field
-                              CustomTextFormField(
-                                controller: nameSurnameController,
-                                validator: (value) =>
-                                    AppValidators.nameSurnameValidator(value),
-                                hintText: StringConstants.nameLabel,
-                                prefixIconPath:
-                                    ImageEnums.ic_nameSurname.toPathPng,
-                                keyboardType: TextInputType.name,
-                                textInputAction: TextInputAction.next,
-                              ),
-
-                              SizedBox(height: context.cMediumValue),
-
-                              // Email input field
-                              CustomTextFormField(
-                                controller: emailController,
-                                validator: (value) =>
-                                    AppValidators.emailValidator(value),
-                                hintText: StringConstants.emailLabel,
-                                prefixIconPath: ImageEnums.ic_email.toPathPng,
-                                keyboardType: TextInputType.emailAddress,
-                                textInputAction: TextInputAction.next,
-                              ),
-
-                              SizedBox(height: context.cMediumValue),
-
-                              // Password input field
-                              CustomPasswordTextField(
-                                controller: passwordController,
-                                obsecureText: obscureText,
-                                changeObsecureText: togglePasswordVisibility,
-                              ),
-
-                              SizedBox(height: context.cMediumValue),
-
-                              // Confirm password input field
-                              CustomPasswordTextField(
-                                controller: confirmPasswordController,
-                                obsecureText: obscureText,
-                                hintText: StringConstants.confirmPasswordLabel,
-                              ),
-
-                              SizedBox(height: context.cMediumValue),
-
-                              // Terms and conditions toggle
-                              const _ToggleTerms(),
-
-                              SizedBox(height: context.cXLargeValue * 1.2),
-
-                              // Sign up button
-                              CustomButtonWidget(
-                                onPressed: () async {
-                                  await signupUser(context.read<AuthCubit>());
-                                },
-                                text: StringConstants.signUpButton,
-                                isRequestAvaliable: isRequestAvailable,
-                              ),
-
-                              SizedBox(height: context.cLargeValue * 1.2),
-
-                              // Social authentication buttons
-                              AuthWithOtherProvider(
-                                onGoogleTap: () async {
-                                  // Google Sign In implementation
-                                },
-                                onAppleTap: () {
-                                  // Apple Sign In implementation
-                                },
-                                onFacebookTap: () {
-                                  // Facebook Sign In implementation
-                                },
-                              ),
-
-                              SizedBox(height: context.cXLargeValue),
-
-                              // Login link for existing users
-                              Text.rich(
-                                TextSpan(
-                                  text:
-                                      StringConstants.alreadyHaveAccount + '  ',
+                        child: Padding(
+                          padding: EdgeInsets.symmetric(
+                            horizontal: context.cXLargeValue,
+                            vertical: context.cMediumValue,
+                          ),
+                          child: Form(
+                            key: formKey,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                // Header section with title and subtitle
+                                Text(
+                                  textAlign: TextAlign.center,
+                                  StringConstants.signUpTitle,
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .headlineMedium
+                                      ?.copyWith(
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: 18,
+                                        height: 2,
+                                      ),
+                                ),
+                                Text(
+                                  textAlign: TextAlign.center,
+                                  StringConstants.signUpSubtitle,
                                   style: Theme.of(context).textTheme.bodyMedium
                                       ?.copyWith(
-                                        fontSize: 12,
+                                        color: AppColors.grey,
+                                        fontSize: 13,
                                         fontWeight: FontWeight.w400,
-                                        color: AppColors.white.withOpacity(0.5),
                                       ),
-                                  children: [
-                                    TextSpan(
-                                      text: '${StringConstants.loginButton}!',
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .bodyMedium
-                                          ?.copyWith(
-                                            color: AppColors.white,
-                                            fontWeight: FontWeight.w400,
-                                          ),
-                                      recognizer: TapGestureRecognizer()
-                                        ..onTap = () {
-                                          NavigatorService.pushNamedAndRemoveUntil(
-                                            AppRoutes.loginView,
-                                          );
-                                        },
-                                    ),
-                                  ],
                                 ),
-                              ),
-                            ],
+
+                                SizedBox(height: context.cXLargeValue * 1.2),
+
+                                // Name and surname input field
+                                CustomTextFormField(
+                                  controller: nameSurnameController,
+                                  validator: (value) =>
+                                      AppValidators.nameSurnameValidator(value),
+                                  hintText: StringConstants.nameLabel,
+                                  prefixIconPath:
+                                      ImageEnums.ic_nameSurname.toPathPng,
+                                  keyboardType: TextInputType.name,
+                                  textInputAction: TextInputAction.next,
+                                ),
+
+                                SizedBox(height: context.cMediumValue),
+
+                                // Email input field
+                                CustomTextFormField(
+                                  controller: emailController,
+                                  validator: (value) =>
+                                      AppValidators.emailValidator(value),
+                                  hintText: StringConstants.emailLabel,
+                                  prefixIconPath: ImageEnums.ic_email.toPathPng,
+                                  keyboardType: TextInputType.emailAddress,
+                                  textInputAction: TextInputAction.next,
+                                ),
+
+                                SizedBox(height: context.cMediumValue),
+
+                                // Password input field
+                                CustomPasswordTextField(
+                                  controller: passwordController,
+                                  obsecureText: obscureText,
+                                  changeObsecureText: togglePasswordVisibility,
+                                ),
+
+                                SizedBox(height: context.cMediumValue),
+
+                                // Confirm password input field
+                                CustomPasswordTextField(
+                                  controller: confirmPasswordController,
+                                  obsecureText: obscureText,
+                                  hintText:
+                                      StringConstants.confirmPasswordLabel,
+                                ),
+
+                                SizedBox(height: context.cMediumValue),
+
+                                // Terms and conditions toggle
+                                const _ToggleTerms(),
+
+                                SizedBox(height: context.cXLargeValue * 1.2),
+
+                                // Sign up button
+                                CustomButtonWidget(
+                                  onPressed: () async {
+                                    await signupUser(context.read<AuthCubit>());
+                                  },
+                                  text: StringConstants.signUpButton,
+                                  isRequestAvaliable: isRequestAvailable,
+                                ),
+
+                                SizedBox(height: context.cLargeValue * 1.2),
+
+                                // Social authentication buttons
+                                AuthWithOtherProvider(
+                                  onGoogleTap: () async {
+                                    // Google Sign In implementation
+                                  },
+                                  onAppleTap: () {
+                                    // Apple Sign In implementation
+                                  },
+                                  onFacebookTap: () {
+                                    // Facebook Sign In implementation
+                                  },
+                                ),
+
+                                SizedBox(height: context.cXLargeValue),
+
+                                // Login link for existing users
+                                Text.rich(
+                                  TextSpan(
+                                    text:
+                                        StringConstants.alreadyHaveAccount +
+                                        '  ',
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .bodyMedium
+                                        ?.copyWith(
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.w400,
+                                          color: AppColors.white.withOpacity(
+                                            0.5,
+                                          ),
+                                        ),
+                                    children: [
+                                      TextSpan(
+                                        text: '${StringConstants.loginButton}!',
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .bodyMedium
+                                            ?.copyWith(
+                                              color: AppColors.white,
+                                              fontWeight: FontWeight.w400,
+                                            ),
+                                        recognizer: TapGestureRecognizer()
+                                          ..onTap = () {
+                                            NavigatorService.pushNamedAndRemoveUntil(
+                                              AppRoutes.loginView,
+                                            );
+                                          },
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                  );
-                },
+                    );
+                  },
+                ),
               ),
             ),
-          ),
-        );
-      },
+          );
+        },
+      ),
     );
   }
 }
