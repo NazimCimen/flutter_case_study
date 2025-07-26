@@ -5,20 +5,28 @@ A modern Flutter application built with Clean Architecture, featuring authentica
 ## 📱 Screenshots
 
 ### Authentication & Onboarding
-![Login Screen](assets/screenshots/ss_1.jpg)
-![Register Screen](assets/screenshots/ss_2.jpg)
+<div style="display: flex; gap: 10px; margin-bottom: 20px;">
+  <img src="assets/screenshots/ss_1.jpg" width="200" alt="Login Screen">
+  <img src="assets/screenshots/ss_2.jpg" width="200" alt="Register Screen">
+</div>
 
 ### Home & Movie Browsing
-![Home Page](assets/screenshots/ss_3.jpg)
-![Movie Details](assets/screenshots/ss_4.jpg)
+<div style="display: flex; gap: 10px; margin-bottom: 20px;">
+  <img src="assets/screenshots/ss_3.jpg" width="200" alt="Home Page">
+  <img src="assets/screenshots/ss_4.jpg" width="200" alt="Movie Details">
+</div>
 
 ### Profile & User Management
-![Profile Page](assets/screenshots/ss_5.jpg)
-![Favorite Movies](assets/screenshots/ss_6.jpg)
+<div style="display: flex; gap: 10px; margin-bottom: 20px;">
+  <img src="assets/screenshots/ss_5.jpg" width="200" alt="Profile Page">
+  <img src="assets/screenshots/ss_6.jpg" width="200" alt="Favorite Movies">
+</div>
 
 ### Navigation & Features
-![Bottom Navigation](assets/screenshots/ss_7.jpg)
-![Language Toggle](assets/screenshots/ss_8.jpg)
+<div style="display: flex; gap: 10px; margin-bottom: 20px;">
+  <img src="assets/screenshots/ss_7.jpg" width="200" alt="Bottom Navigation">
+  <img src="assets/screenshots/ss_8.jpg" width="200" alt="Language Toggle">
+</div>
 
 ## 🚀 Features
 
