@@ -2,6 +2,24 @@
 
 A modern Flutter application built with Clean Architecture, featuring authentication, movie browsing, and profile management. This project was developed as a case study for Nodelabs.
 
+## 📱 Screenshots
+
+### Authentication & Onboarding
+![Login Screen](assets/screenshots/ss_1.jpg)
+![Register Screen](assets/screenshots/ss_2.jpg)
+
+### Home & Movie Browsing
+![Home Page](assets/screenshots/ss_3.jpg)
+![Movie Details](assets/screenshots/ss_4.jpg)
+
+### Profile & User Management
+![Profile Page](assets/screenshots/ss_5.jpg)
+![Favorite Movies](assets/screenshots/ss_6.jpg)
+
+### Navigation & Features
+![Bottom Navigation](assets/screenshots/ss_7.jpg)
+![Language Toggle](assets/screenshots/ss_8.jpg)
+
 ## 🚀 Features
 
 ### Core Requirements ✅
@@ -131,10 +149,12 @@ The `TokenService` class provides centralized token management with:
 - **Token Validation**: Automatic token verification
 - **Secure API Calls**: Authenticated requests with proper headers
 
-### Professional UX
-- **Splash Screen**: Branded app launch experience
-- **Custom App Icon**: Professional application identity
-- **Loading States**: Smooth loading indicators throughout the app
+### Splash Screen
+ - Branded app launch experience
+ 
+### App Icon 
+ - Professional application identity
+
 
 ## 🛠️ Technical Stack
 

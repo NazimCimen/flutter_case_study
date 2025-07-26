@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 @immutable
 final class StringConstants {
-  static String get appName => 'Case Study';
+  static String get appName => 'SINFLIX';
 
   // Auth Başlıkları ve Alt Başlıkları - English Reading App'e uygun
   static String get loginTitle => 'loginTitle'.tr();
