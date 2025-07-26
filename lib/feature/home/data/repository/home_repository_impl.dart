@@ -4,6 +4,7 @@ import 'package:case_study/core/connection/network_info.dart';
 import 'package:case_study/feature/home/data/data_source/home_remote_data_source.dart';
 import 'package:case_study/feature/home/domain/repository/home_repository.dart';
 import 'package:case_study/feature/shared/domain/entity/movie_entity.dart';
+import 'package:case_study/config/localization/string_constants.dart';
 
 class HomeRepositoryImpl implements HomeRepository {
   final HomeRemoteDataSource remoteDataSource;
@@ -26,7 +27,7 @@ class HomeRepositoryImpl implements HomeRepository {
             Right(movies?.map((movie) => movie.toEntity()).toList() ?? []),
       );
     } else {
-      return Left(ConnectionFailure(errorMessage: 'No internet connection'));
+      return Left(ConnectionFailure(errorMessage: StringConstants.noInternetConnection));
     }
   }
 
@@ -37,7 +38,7 @@ class HomeRepositoryImpl implements HomeRepository {
     if (await networkInfo.currentConnectivityResult) {
       return await remoteDataSource.toggleFavorite(movieId: movieId);
     } else {
-      return Left(ConnectionFailure(errorMessage: 'No internet connection'));
+      return Left(ConnectionFailure(errorMessage: StringConstants.noInternetConnection));
     }
   }
 }

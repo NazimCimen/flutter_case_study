@@ -50,7 +50,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
         final userData = responseData['data'] as Map<String, dynamic>;
         return Right(UserModel.fromJson(userData));
       } else {
-        return Left(ServerFailure(errorMessage: 'Signup failed'));
+        return Left(ServerFailure(errorMessage: StringConstants.signupFailed));
       }
     } on DioException catch (e) {
       return ErrorHandler.handleDioException(e).fold(
@@ -87,7 +87,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
         final userData = responseData['data'] as Map<String, dynamic>;
         return Right(UserModel.fromJson(userData));
       } else {
-        return Left(ServerFailure(errorMessage: 'Login failed'));
+        return Left(ServerFailure(errorMessage: StringConstants.loginFailed));
       }
     } on DioException catch (e) {
       return ErrorHandler.handleDioException(e).fold(

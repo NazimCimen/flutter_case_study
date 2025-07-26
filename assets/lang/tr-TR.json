@@ -69,5 +69,12 @@
   "noContentFound": "İçerik bulunamadı",
   "userAgreementPrefix": "Kullanıcı sözleşmesini ",
   "userAgreementSuffix": "okudum ve kabul ediyorum.",
-  "userAgreementContinue": " Bu sözleşmeyi okuyarak devam ediniz lütfen."
+  "userAgreementContinue": " Bu sözleşmeyi okuyarak devam ediniz lütfen.",
+  "signup_failed": "Kayıt işlemi başarısız oldu",
+  "login_failed": "Giriş işlemi başarısız oldu",
+  "failed_to_load_movies": "Filmler yüklenirken hata oluştu",
+  "failed_to_toggle_favorite": "Favori işlemi başarısız oldu",
+  "profile_image_update_failed": "Profil fotoğrafı güncellenirken hata oluştu",
+  "profile_image_filename": "profil_fotografi.jpg",
+  "no_internet_connection": "İnternet bağlantısı yok"
 } 

@@ -66,6 +66,21 @@ final class StringConstants {
   static String get validationError => 'validation_error'.tr();
   static String get apiServerError => 'server_error'.tr();
 
+  // Auth Error Messages
+  static String get signupFailed => 'signup_failed'.tr();
+  static String get loginFailed => 'login_failed'.tr();
+
+  // Home Error Messages
+  static String get failedToLoadMovies => 'failed_to_load_movies'.tr();
+  static String get failedToToggleFavorite => 'failed_to_toggle_favorite'.tr();
+
+  // Profile Error Messages
+  static String get profileImageUpdateFailed => 'profile_image_update_failed'.tr();
+  static String get profileImageFilename => 'profile_image_filename'.tr();
+
+  // Connection Error Messages
+  static String get noInternetConnection => 'no_internet_connection'.tr();
+
   // Profile Detail Messages
   static String get profileDetailTitle => 'profileDetailTitle'.tr();
   static String get uploadPhotosTitle => 'uploadPhotosTitle'.tr();

@@ -16,7 +16,6 @@ dependencies:
   mockito: ^5.4.4 # Used to test the app and improve the code quality
   dartz: ^0.10.1 # Functional programming library for Dart
   get_it: ^7.7.0 # Service locator for dependency injection
-  uuid: ^4.5.0 # Generates unique IDs for objects or entities
   json_annotation: 4.9.0 # Enables code generation for JSON serialization/deserialization
   equatable: ^2.0.5 # used to prevent object reference shifts
   internet_connection_checker: ^1.0.0+1 # Checks for active internet connections

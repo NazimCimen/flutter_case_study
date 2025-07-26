@@ -48,7 +48,7 @@ class HomeRemoteDataSourceImpl extends HomeRemoteDataSource {
               .toList();
           return Right(moviesList);
         } else {
-          return Left(ServerFailure(errorMessage: 'Failed to load movies'));
+          return Left(ServerFailure(errorMessage: StringConstants.failedToLoadMovies));
         }
       });
     } on DioException catch (e) {
@@ -83,7 +83,7 @@ class HomeRemoteDataSourceImpl extends HomeRemoteDataSource {
         if (response.statusCode == 200) {
           return Right(true);
         } else {
-          return Left(ServerFailure(errorMessage: 'Failed to toggle favorite'));
+          return Left(ServerFailure(errorMessage: StringConstants.failedToToggleFavorite));
         }
       });
     } on DioException catch (e) {

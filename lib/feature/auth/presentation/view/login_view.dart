@@ -34,6 +34,7 @@ class _LoginViewState extends State<LoginView> with LoginMixin {
             context: context,
             text: state.failure.errorMessage,
           );
+          isRequestAvailable = false;
         }
         if (state is AuthSuccess) {
           NavigatorService.pushNamedAndRemoveUntil(AppRoutes.navBarView);

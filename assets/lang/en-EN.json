@@ -69,5 +69,12 @@
   "noContentFound": "No content found",
   "userAgreementPrefix": "I have read and accept the ",
   "userAgreementSuffix": "user agreement.",
-  "userAgreementContinue": " Please read this agreement to continue."
+  "userAgreementContinue": " Please read this agreement to continue.",
+  "signup_failed": "Signup failed",
+  "login_failed": "Login failed",
+  "failed_to_load_movies": "Failed to load movies",
+  "failed_to_toggle_favorite": "Failed to toggle favorite",
+  "profile_image_update_failed": "Profile image update failed",
+  "profile_image_filename": "profile_image.jpg",
+  "no_internet_connection": "No internet connection"
 } 

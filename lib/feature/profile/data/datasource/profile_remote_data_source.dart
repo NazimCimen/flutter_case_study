@@ -31,7 +31,7 @@ class ProfileRemoteDataSourceImpl implements ProfileRemoteDataSource {
       final formData = FormData.fromMap({
         'file': await MultipartFile.fromFile(
           imageFile.path,
-          filename: 'profile_image.jpg',
+          filename: StringConstants.profileImageFilename,
         ),
       });
 
@@ -55,7 +55,7 @@ class ProfileRemoteDataSourceImpl implements ProfileRemoteDataSource {
           return Right(UserModel.fromJson(userData));
         } else {
           return Left(
-            ServerFailure(errorMessage: 'Profile image update failed'),
+            ServerFailure(errorMessage: StringConstants.profileImageUpdateFailed),
           );
         }
       });
@@ -96,7 +96,7 @@ class ProfileRemoteDataSourceImpl implements ProfileRemoteDataSource {
               .toList();
           return Right(moviesList);
         } else {
-          return Left(ServerFailure(errorMessage: 'Failed to load movies'));
+          return Left(ServerFailure(errorMessage: StringConstants.failedToLoadMovies));
         }
       });
     } on DioException catch (e) {
