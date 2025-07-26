@@ -9,9 +9,9 @@ A modern Flutter application built with Clean Architecture, featuring authentica
   <img src="assets/screenshots/ss_1.jpg" width="180" alt="Splash Screen">
   <img src="assets/screenshots/ss_2.jpg" width="180" alt="Login Screen">
   <img src="assets/screenshots/ss_3.jpg" width="180" alt="Register Page">
+  <img src="assets/screenshots/ss_7.jpg" width="180" alt="Offer Sheet">
   <img src="assets/screenshots/ss_4.jpg" width="180" alt="Home Screen">
   <img src="assets/screenshots/ss_5.jpg" width="180" alt="Profile Page">
-  <img src="assets/screenshots/ss_7.jpg" width="180" alt="Offer Sheet">
   <img src="assets/screenshots/ss_8.jpg" width="180" alt="Update Profile">
 </div>
 
