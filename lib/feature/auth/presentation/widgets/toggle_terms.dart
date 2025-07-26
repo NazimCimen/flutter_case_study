@@ -7,7 +7,7 @@ class _ToggleTerms extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text.rich(
       TextSpan(
-        text: 'Kullanıcı sözleşmesini ',
+        text: StringConstants.userAgreementPrefix,
         style: Theme.of(context).textTheme.bodyMedium?.copyWith(
           fontWeight: FontWeight.w400,
           color: AppColors.white.withOpacity(0.5),
@@ -15,7 +15,7 @@ class _ToggleTerms extends StatelessWidget {
         ),
         children: [
           TextSpan(
-            text: 'okudum ve kabul ediyorum.',
+            text: StringConstants.userAgreementSuffix,
             style: Theme.of(context).textTheme.bodyMedium?.copyWith(
               fontWeight: FontWeight.w400,
               decoration: TextDecoration.underline,
@@ -24,7 +24,7 @@ class _ToggleTerms extends StatelessWidget {
             recognizer: TapGestureRecognizer()..onTap = () {},
           ),
           TextSpan(
-            text: ' Bu sözleşmeyi okuyarak devam ediniz lütfen.',
+            text: StringConstants.userAgreementContinue,
             style: Theme.of(context).textTheme.bodyMedium?.copyWith(
               fontWeight: FontWeight.w400,
               color: AppColors.white.withOpacity(0.5),

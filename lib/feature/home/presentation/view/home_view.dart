@@ -1,4 +1,5 @@
 import 'package:case_study/config/theme/app_colors.dart';
+import 'package:case_study/config/localization/string_constants.dart';
 import 'package:case_study/core/utils/enum/image_enum.dart';
 import 'package:case_study/core/utils/string_utils.dart';
 import 'package:flutter/material.dart';
@@ -27,7 +28,7 @@ class _HomeViewState extends State<HomeView> with HomeViewMixin {
         if (state is HomeError) {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
-              content: Text('Error: ${state.message}'),
+              content: Text('${StringConstants.errorMessage}: ${state.message}'),
               backgroundColor: Colors.red,
               duration: const Duration(seconds: 3),
             ),
@@ -43,11 +44,11 @@ class _HomeViewState extends State<HomeView> with HomeViewMixin {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text('Error: ${state.message}'),
+                Text('${StringConstants.errorMessage}: ${state.message}'),
                 const SizedBox(height: 16),
                 ElevatedButton(
                   onPressed: () => context.read<HomeCubit>().refreshMovies(),
-                  child: const Text('Retry'),
+                  child: Text(StringConstants.retryButton),
                 ),
               ],
             ),
@@ -69,7 +70,7 @@ class _HomeViewState extends State<HomeView> with HomeViewMixin {
               newPageProgressIndicatorBuilder: (context) =>
                   const Center(child: CircularProgressIndicator()),
               noItemsFoundIndicatorBuilder: (context) =>
-                  const Center(child: Text('No content found')),
+                  Center(child: Text(StringConstants.noContentFound)),
             ),
           );
         }

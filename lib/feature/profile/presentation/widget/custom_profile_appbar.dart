@@ -80,7 +80,7 @@ class CustomProfileAppBar extends StatelessWidget
                     ),
                     SizedBox(width: context.cLowValue / 2),
                     Text(
-                      'Sınırlı Teklif',
+                      StringConstants.limitedOffer,
                       style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                         fontWeight: FontWeight.w600,
                         fontSize: 12,

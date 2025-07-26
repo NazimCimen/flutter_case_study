@@ -5,8 +5,6 @@ import 'package:case_study/core/connection/network_info.dart';
 import 'package:case_study/feature/auth/data/datasource/auth_remote_data_source.dart';
 import 'package:case_study/feature/shared/domain/entity/user_entity.dart';
 import 'package:case_study/feature/auth/domain/repository/auth_repository.dart';
-import 'package:case_study/core/cache/cache_manager/encrypted_cache_manager.dart';
-import 'package:case_study/core/cache/cache_enum.dart';
 
 class AuthRepositoryImpl implements AuthRepository {
   final AuthRemoteDataSource remoteDataSource;

@@ -34,7 +34,7 @@ class FavoriteMoviesSection extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      'Error loading favorite movies',
+                      StringConstants.errorLoadingFavoriteMovies,
                       style: const TextStyle(color: Colors.white),
                       textAlign: TextAlign.center,
                     ),
@@ -42,7 +42,7 @@ class FavoriteMoviesSection extends StatelessWidget {
                     ElevatedButton(
                       onPressed: () =>
                           context.read<ProfileCubit>().loadFavoriteMovies(),
-                      child: const Text('Retry'),
+                      child: Text(StringConstants.retryButton),
                     ),
                   ],
                 ),
@@ -65,7 +65,7 @@ class FavoriteMoviesSection extends StatelessWidget {
                       ),
                       const SizedBox(height: 16),
                       Text(
-                        'Henüz favori filminiz yok',
+                        StringConstants.noFavoriteMoviesYet,
                         style: TextStyle(color: Colors.grey[400], fontSize: 16),
                         textAlign: TextAlign.center,
                       ),
@@ -102,8 +102,8 @@ class FavoriteMoviesSection extends StatelessWidget {
                       itemBuilder: (context, index) {
                         final movie = state.favoriteMovies![index];
                         return FavoriteMovieCard(
-                          title: movie.title ?? 'Unknown Title',
-                          studio: movie.description ?? 'Unknown Studio',
+                          title: movie.title ?? StringConstants.unknownTitle,
+                          studio: movie.description ?? StringConstants.unknownStudio,
                           posterUrl: movie.posterUrl,
                         );
                       },

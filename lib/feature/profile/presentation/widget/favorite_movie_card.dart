@@ -29,7 +29,7 @@ class FavoriteMovieCard extends StatelessWidget {
             width: double.infinity,
             decoration: BoxDecoration(
               borderRadius: context.cBorderRadiusAllMedium,
-              color: Colors.grey[800],
+              color: AppColors.white.withValues(alpha: 0.1),
             ),
             child: ClipRRect(
               borderRadius: context.cBorderRadiusAllMedium,
@@ -40,7 +40,7 @@ class FavoriteMovieCard extends StatelessWidget {
                       width: double.infinity,
                       height: double.infinity,
                       placeholder: (context, url) => Container(
-                        color: Colors.grey[800],
+                        color: AppColors.white.withValues(alpha: 0.1),
                         child: const Center(
                           child: CircularProgressIndicator(
                             strokeWidth: 2,
@@ -51,7 +51,7 @@ class FavoriteMovieCard extends StatelessWidget {
                         ),
                       ),
                       errorWidget: (context, url, error) => Container(
-                        color: Colors.grey[800],
+                        color: AppColors.white.withValues(alpha: 0.1),
                         child: const Center(
                           child: Icon(
                             Icons.movie,
@@ -64,7 +64,7 @@ class FavoriteMovieCard extends StatelessWidget {
                       memCacheHeight: 300,
                     )
                   : Container(
-                      color: Colors.grey[800],
+                      color: AppColors.white.withValues(alpha: 0.1),
                       child: const Center(
                         child: Icon(
                           Icons.movie,

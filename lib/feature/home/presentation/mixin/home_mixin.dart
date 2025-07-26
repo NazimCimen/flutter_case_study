@@ -15,11 +15,11 @@ mixin HomeViewMixin on State<HomeView> {
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) async {
-      await fetchPage(context, 1);
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      fetchPage(context, 1);
 
-      pagingController.addPageRequestListener((pageKey) async {
-        await fetchPage(context, pageKey);
+      pagingController.addPageRequestListener((pageKey) {
+        fetchPage(context, pageKey);
       });
     });
   }

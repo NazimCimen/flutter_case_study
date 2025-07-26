@@ -4,12 +4,13 @@ import 'package:case_study/config/localization/string_constants.dart';
 import 'package:case_study/core/size/constant_size.dart';
 import 'package:case_study/product/componets/custom_snack_bars.dart';
 import 'package:case_study/product/widgets/custom_button.dart';
-import 'package:case_study/feature/profile/presentation/widget/custom_profile_appbar.dart';
 import 'package:case_study/feature/profile/presentation/widget/upload_profile_image_sheet.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:case_study/feature/profile/presentation/cubit/profile_cubit.dart';
 import 'package:case_study/feature/profile/presentation/cubit/profile_state.dart';
+import 'package:case_study/feature/profile/presentation/widget/custom_profile_appbar.dart';
+
 
 class ProfileDetailView extends StatefulWidget {
   const ProfileDetailView({super.key});
@@ -44,29 +45,26 @@ class _ProfileDetailViewState extends State<ProfileDetailView> {
               if (state is ProfileError) {
                 CustomSnackBars.showCustomBottomScaffoldSnackBar(
                   context: context,
-                  text: '${StringConstants.profilePhotoUpdateError}: ${state.message}',
+                  text:
+                      '${StringConstants.profilePhotoUpdateError}: ${state.message}',
                 );
               }
             },
             builder: (context, state) {
               // Show full screen loading when updating profile image
               if (state is ProfileLoading) {
-                return const Center(
+                return Center(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      CircularProgressIndicator(
+                      const CircularProgressIndicator(
                         color: Colors.white,
                         strokeWidth: 3,
                       ),
-                      SizedBox(height: 24),
+                      const SizedBox(height: 24),
                       Text(
-                        'Profil fotoğrafı güncelleniyor...',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 16,
-                          fontWeight: FontWeight.w500,
-                        ),
+                        StringConstants.profilePhotoUpdating,
+                        style: Theme.of(context).textTheme.bodyMedium,
                       ),
                     ],
                   ),

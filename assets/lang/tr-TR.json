@@ -55,5 +55,19 @@
   "profilePhotoUpdateError": "Hata",
   "changePhotoButton": "Değiştir",
   "removePhotoButton": "Kaldır",
-  "updatingText": "Güncelleniyor..."
+  "updatingText": "Güncelleniyor...",
+  "profilePhotoUpdating": "Profil fotoğrafı güncelleniyor...",
+  "limitedOffer": "Sınırlı Teklif",
+  "errorLoadingFavoriteMovies": "Favori filmler yüklenirken hata oluştu",
+  "noFavoriteMoviesYet": "Henüz favori filminiz yok",
+  "unknownTitle": "Bilinmeyen Başlık",
+  "unknownStudio": "Bilinmeyen Stüdyo",
+  "moreInfo": "Daha Fazlası",
+  "noDescriptionAvailable": "Açıklama mevcut değil",
+  "movieIdLabel": "ID",
+  "errorMessage": "Hata",
+  "noContentFound": "İçerik bulunamadı",
+  "userAgreementPrefix": "Kullanıcı sözleşmesini ",
+  "userAgreementSuffix": "okudum ve kabul ediyorum.",
+  "userAgreementContinue": " Bu sözleşmeyi okuyarak devam ediniz lütfen."
 } 

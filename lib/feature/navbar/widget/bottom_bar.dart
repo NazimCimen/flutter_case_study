@@ -15,7 +15,7 @@ class _BottomBar extends StatelessWidget {
             selector: (state) => state is MainLayoutLoaded && state.currentIndex == 0,
             builder: (context, isSelected) => _NavButton(
               icon: ImageEnums.ic_home.toPathPng,
-              label: 'Anasayfa',
+              labelKey: 'homeTab',
               isSelected: isSelected,
               onTap: () {
                 context.read<NavBarCubit>().setTabIndex(0);
@@ -27,7 +27,7 @@ class _BottomBar extends StatelessWidget {
             selector: (state) => state is MainLayoutLoaded && state.currentIndex == 1,
             builder: (context, isSelected) => _NavButton(
               icon: ImageEnums.ic_profile.toPathPng,
-              label: 'Profil',
+              labelKey: 'profileTab',
               isSelected: isSelected,
               onTap: () {
                 context.read<NavBarCubit>().setTabIndex(1);

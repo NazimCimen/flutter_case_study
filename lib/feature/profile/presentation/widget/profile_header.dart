@@ -78,7 +78,7 @@ class ProfileHeader extends StatelessWidget {
     if (photoUrl != null && photoUrl.isNotEmpty) {
       return CircleAvatar(
         radius: 30,
-        backgroundColor: Colors.grey[300],
+        backgroundColor: AppColors.white.withValues(alpha: 0.1),
         child: ClipOval(
           child: CachedNetworkImage(
             imageUrl: photoUrl,
@@ -86,16 +86,16 @@ class ProfileHeader extends StatelessWidget {
             height: 60,
             fit: BoxFit.cover,
             placeholder: (context, url) => Container(
-              color: Colors.grey[300],
+              color: AppColors.white.withValues(alpha: 0.1),
               child: const Center(
                 child: CircularProgressIndicator(strokeWidth: 2),
               ),
             ),
             errorWidget: (context, url, error) => Container(
-              color: Colors.grey[300],
+              color: AppColors.white.withValues(alpha: 0.1),
               child: const Icon(Icons.person, size: 30, color: Colors.grey),
             ),
-            memCacheWidth: 120, // Optimize for avatar size
+            memCacheWidth: 120,
             memCacheHeight: 120,
           ),
         ),

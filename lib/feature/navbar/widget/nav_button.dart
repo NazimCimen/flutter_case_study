@@ -3,13 +3,13 @@ part of '../view/navbar_view.dart';
 class _NavButton extends StatelessWidget {
   const _NavButton({
     required this.icon,
-    required this.label,
+    required this.labelKey,
     required this.onTap,
     required this.isSelected,
   });
 
   final String icon;
-  final String label;
+  final String labelKey;
   final VoidCallback onTap;
   final bool isSelected;
 
@@ -28,7 +28,7 @@ class _NavButton extends StatelessWidget {
           border: Border.all(
             color: isSelected
                 ? AppColors.white
-                : AppColors.white.withOpacity(0.2),
+                : AppColors.white.withValues(alpha: 0.2),
           ),
         ),
         child: Row(
@@ -40,17 +40,17 @@ class _NavButton extends StatelessWidget {
               height: context.cLargeValue,
               color: isSelected
                   ? AppColors.white
-                  : AppColors.white.withOpacity(0.7),
+                  : AppColors.white.withValues(alpha: 0.7),
             ),
             SizedBox(width: context.cLowValue),
             Text(
-              label,
+              labelKey.tr(),
               style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                 fontWeight: FontWeight.w500,
                 fontSize: context.cLowValue * 1.5,
                 color: isSelected
                     ? AppColors.white
-                    : AppColors.white.withOpacity(0.7),
+                    : AppColors.white.withValues(alpha: 0.7),
               ),
             ),
           ],

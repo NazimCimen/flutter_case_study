@@ -120,7 +120,7 @@ class _ContentWidget extends StatelessWidget {
                               ),
                               const WidgetSpan(child: SizedBox(width: 4)),
                               TextSpan(
-                                text: 'Daha Fazlası',
+                                text: StringConstants.moreInfo,
                                 style: Theme.of(context).textTheme.bodyMedium
                                     ?.copyWith(
                                       fontWeight: FontWeight.w700,
@@ -160,11 +160,11 @@ class _ImageWidget extends StatelessWidget {
             width: double.infinity,
             height: double.infinity,
             placeholder: (context, url) => Container(
-              color: Colors.grey[300],
+              color: AppColors.white.withValues(alpha: 0.1),
               child: const Center(child: CircularProgressIndicator()),
             ),
             errorWidget: (context, url, error) => Container(
-              color: Colors.grey[300],
+              color: AppColors.white.withValues(alpha: 0.1),
               child: const Center(
                 child: Icon(Icons.error, color: Colors.grey, size: 50),
               ),
@@ -173,7 +173,7 @@ class _ImageWidget extends StatelessWidget {
             memCacheHeight: 1200,
           )
         : Container(
-            color: Colors.grey[300],
+            color: AppColors.white.withValues(alpha: 0.1),
             child: const Center(
               child: Icon(Icons.movie, color: Colors.grey, size: 50),
             ),

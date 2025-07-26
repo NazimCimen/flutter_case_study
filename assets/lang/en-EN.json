@@ -55,5 +55,19 @@
   "profilePhotoUpdateError": "Error",
   "changePhotoButton": "Change",
   "removePhotoButton": "Remove",
-  "updatingText": "Updating..."
+  "updatingText": "Updating...",
+  "profilePhotoUpdating": "Profile photo updating...",
+  "limitedOffer": "Limited Offer",
+  "errorLoadingFavoriteMovies": "Error loading favorite movies",
+  "noFavoriteMoviesYet": "No favorite movies yet",
+  "unknownTitle": "Unknown Title",
+  "unknownStudio": "Unknown Studio",
+  "moreInfo": "More Info",
+  "noDescriptionAvailable": "No description available",
+  "movieIdLabel": "ID",
+  "errorMessage": "Error",
+  "noContentFound": "No content found",
+  "userAgreementPrefix": "I have read and accept the ",
+  "userAgreementSuffix": "user agreement.",
+  "userAgreementContinue": " Please read this agreement to continue."
 } 

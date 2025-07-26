@@ -110,4 +110,26 @@ final class StringConstants {
   static String get changePhotoButton => 'changePhotoButton'.tr();
   static String get removePhotoButton => 'removePhotoButton'.tr();
   static String get updatingText => 'updatingText'.tr();
+  static String get profilePhotoUpdating => 'profilePhotoUpdating'.tr();
+
+  // Profile App Bar Messages
+  static String get limitedOffer => 'limitedOffer'.tr();
+
+  // Favorite Movies Messages
+  static String get errorLoadingFavoriteMovies => 'errorLoadingFavoriteMovies'.tr();
+  static String get noFavoriteMoviesYet => 'noFavoriteMoviesYet'.tr();
+  static String get unknownTitle => 'unknownTitle'.tr();
+  static String get unknownStudio => 'unknownStudio'.tr();
+
+  // Home Messages
+  static String get moreInfo => 'moreInfo'.tr();
+  static String get noDescriptionAvailable => 'noDescriptionAvailable'.tr();
+  static String get movieIdLabel => 'movieIdLabel'.tr();
+  static String get errorMessage => 'errorMessage'.tr();
+  static String get noContentFound => 'noContentFound'.tr();
+
+  // Terms Messages
+  static String get userAgreementPrefix => 'userAgreementPrefix'.tr();
+  static String get userAgreementSuffix => 'userAgreementSuffix'.tr();
+  static String get userAgreementContinue => 'userAgreementContinue'.tr();
 } 

@@ -24,7 +24,7 @@ class ProfileHeaderSection extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text('Error: ${state.message}'),
+                Text(state.message),
                 const SizedBox(height: 16),
                 ElevatedButton(
                   onPressed: () => context.read<ProfileCubit>().loadProfile(),
@@ -39,4 +39,4 @@ class ProfileHeaderSection extends StatelessWidget {
       },
     );
   }
-} 
+}

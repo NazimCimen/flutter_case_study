@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:case_study/feature/shared/domain/entity/movie_entity.dart';
+import 'package:case_study/config/localization/string_constants.dart';
 
 class MovieCard extends StatelessWidget {
   final MovieEntity movie;
 
-  const MovieCard({
-    super.key,
-    required this.movie,
-  });
+  const MovieCard({required this.movie, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -38,22 +36,18 @@ class MovieCard extends StatelessWidget {
                           );
                         },
                       )
-                    : const Icon(
-                        Icons.movie,
-                        size: 40,
-                        color: Colors.grey,
-                      ),
+                    : const Icon(Icons.movie, size: 40, color: Colors.grey),
               ),
             ),
             const SizedBox(width: 16),
-            
+
             // Movie details
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    movie.title ?? 'Unknown Title',
+                    movie.title ?? StringConstants.unknownTitle,
                     style: Theme.of(context).textTheme.titleMedium?.copyWith(
                       fontWeight: FontWeight.bold,
                     ),
@@ -62,20 +56,20 @@ class MovieCard extends StatelessWidget {
                   ),
                   const SizedBox(height: 8),
                   Text(
-                    movie.description ?? 'No description available',
-                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                      color: Colors.grey[600],
-                    ),
+                    movie.description ?? StringConstants.noDescriptionAvailable,
+                    style: Theme.of(
+                      context,
+                    ).textTheme.bodyMedium?.copyWith(color: Colors.grey[600]),
                     maxLines: 3,
                     overflow: TextOverflow.ellipsis,
                   ),
                   const SizedBox(height: 8),
                   if (movie.id != null)
                     Text(
-                      'ID: ${movie.id}',
-                      style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                        color: Colors.grey[500],
-                      ),
+                      '${StringConstants.movieIdLabel}: ${movie.id}',
+                      style: Theme.of(
+                        context,
+                      ).textTheme.bodySmall?.copyWith(color: Colors.grey[500]),
                     ),
                 ],
               ),
@@ -85,4 +79,4 @@ class MovieCard extends StatelessWidget {
       ),
     );
   }
-} 
+}

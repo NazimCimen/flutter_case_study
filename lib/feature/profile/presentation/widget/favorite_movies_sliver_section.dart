@@ -44,7 +44,7 @@ class FavoriteMoviesSliverSection extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        'Error loading favorite movies',
+                        StringConstants.errorLoadingFavoriteMovies,
                         style: Theme.of(context).textTheme.bodyMedium,
                         textAlign: TextAlign.center,
                       ),
@@ -78,7 +78,7 @@ class FavoriteMoviesSliverSection extends StatelessWidget {
                         ),
                         const SizedBox(height: 16),
                         Text(
-                          'Henüz favori filminiz yok',
+                          StringConstants.noFavoriteMoviesYet,
                           style: TextStyle(
                             color: AppColors.white.withValues(alpha: 0.4),
                             fontSize: 16,
@@ -118,8 +118,8 @@ class FavoriteMoviesSliverSection extends StatelessWidget {
                   itemBuilder: (context, index) {
                     final movie = state.favoriteMovies![index];
                     return FavoriteMovieCard(
-                      title: movie.title ?? 'Unknown Title',
-                      studio: movie.description ?? 'Unknown Studio',
+                      title: movie.title ?? StringConstants.unknownTitle,
+                      studio: movie.description ?? StringConstants.unknownStudio,
                       posterUrl: movie.posterUrl,
                     );
                   },

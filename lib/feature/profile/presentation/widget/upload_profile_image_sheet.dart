@@ -5,8 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:case_study/core/size/constant_size.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:case_study/feature/profile/presentation/cubit/profile_cubit.dart';
 
 /// Bottom sheet widget for changing profile image with camera or gallery options.
 class UploadProfileImageSheet extends StatefulWidget {

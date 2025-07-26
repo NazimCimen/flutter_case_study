@@ -5,8 +5,11 @@ import 'package:case_study/core/size/padding_extension.dart';
 import 'package:case_study/core/utils/enum/image_enum.dart';
 import 'package:case_study/feature/navbar/viewmodel/navbar_view_model.dart';
 import 'package:case_study/feature/offer_sheet/offer_sheet.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:case_study/config/localization/locale_constants.dart';
+import 'language_toggle_button.dart';
 
 /// Sliver App Bar for profile view with flexible space and better UX
 class SliverProfileAppBar extends StatelessWidget {
@@ -55,8 +58,11 @@ class SliverProfileAppBar extends StatelessWidget {
           ),
         ],
       ),
-    
+
       actions: [
+        // Language flag button
+        const LanguageToggleButton(),
+        SizedBox(width: context.cLowValue/2),
         //offer button
         if (isOffer)
           GestureDetector(
@@ -84,13 +90,10 @@ class SliverProfileAppBar extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Image.asset(
-                    ImageEnums.ic_offer.toPathPng,
-                    fit: BoxFit.cover,
-                  ),
+                  Image.asset(ImageEnums.ic_offer.toPathPng, fit: BoxFit.cover),
                   SizedBox(width: context.cLowValue / 2),
                   Text(
-                    'Sınırlı Teklif',
+                    StringConstants.limitedOffer,
                     style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                       fontWeight: FontWeight.w600,
                       fontSize: 12,
